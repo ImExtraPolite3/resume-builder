@@ -1,0 +1,32 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+#root,
+.general {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  align-items: center;
+}
+
+.user-input {
+  width: 95%;
+  margin: auto;
+}
+
+.general {
+  gap: 10px;
+}
+
+.general > h1,
+.general > div:last-child {
+  grid-column: 1 / 3;
+}
+
+.general > div > input,
+.general > div > textarea {
+  width: 100%;
+  font-size: 1rem;
+  padding: 6px 10px;
+}
