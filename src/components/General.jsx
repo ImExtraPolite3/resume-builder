@@ -1,6 +1,8 @@
 export default function General() {
   return (
     <div className="general">
+      <h1>General</h1>
+
       <label htmlFor="first-name">First Name: </label>
       <input type="text" id="first-name" />
 
