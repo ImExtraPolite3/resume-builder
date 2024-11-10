@@ -26,8 +26,8 @@
 
 .general > h1,
 .general > div:last-child,
-.education > div:nth-child(2),
-.education > div:nth-child(5) {
+.education > div:nth-child(3),
+.education > div:nth-child(6) {
   grid-column: 1 / 3;
 }
 
