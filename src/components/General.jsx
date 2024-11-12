@@ -1,10 +1,22 @@
-export default function General() {
+export default function General({ generalInfo, onGeneralInfoChange }) {
+  const handleName = (e) => {
+    onGeneralInfoChange({
+      ...generalInfo,
+      name: e.target.value,
+    });
+  };
+
   return (
     <div className="general">
       <h1>General</h1>
       <div>
         <label htmlFor="first-name">First Name: </label>
-        <input type="text" id="first-name" />
+        <input
+          type="text"
+          id="first-name"
+          value={generalInfo.name}
+          onChange={handleName}
+        />
       </div>
       <div>
         <label htmlFor="last-name">Last Name: </label>
