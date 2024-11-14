@@ -1,27 +1,41 @@
+const getIdName = [
+  'work-title',
+  'company',
+  'office-location',
+  'start-date',
+  'end-date',
+];
+
+const getName = [
+  'Title:',
+  'Company:',
+  'Office Location:',
+  'Start Date:',
+  'End Date:',
+];
+
+function CreateGeneralContent({ idName, name }) {
+  return (
+    <div>
+      <label htmlFor={idName}>{name}</label>
+      <input type="text" id={idName} />
+    </div>
+  );
+}
+
+function GeneralContent() {
+  return getIdName.map((eachIdName, index) => {
+    return <CreateGeneralContent idName={eachIdName} name={getName[index]} />;
+  });
+}
+
 export default function Experience() {
   return (
     <div className="experience">
       <h1>Experience</h1>
-      <button>+</button>
+      <button className="create-new-experience">+</button>
       <div>
-        <label htmlFor="work-title">Title:</label>
-        <input type="text" id="work-title" />
-      </div>
-      <div>
-        <label htmlFor="company">Company</label>
-        <input type="text" id="company" />
-      </div>
-      <div>
-        <label htmlFor="office-location">Office Location</label>
-        <input type="text" id="office-location" />
-      </div>
-      <div>
-        <label htmlFor="start-date">Start Date:</label>
-        <input type="text" id="start-date" />
-      </div>
-      <div>
-        <label htmlFor="end-date">End Date:</label>
-        <input type="text" id="end-date" />
+        <GeneralContent />
       </div>
     </div>
   );
