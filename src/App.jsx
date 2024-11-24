@@ -1,6 +1,31 @@
+import { useState } from 'react';
 import Education from './components/Education';
 import Experience from './components/Experience';
 import General from './components/General';
+
+const buttonName = ['General', 'Education', 'Experience'];
+
+function ButtonProp({ name, whenClick }) {
+  return (
+    <button className={`show-${name}`} onClick={whenClick}>
+      {name}
+    </button>
+  );
+}
+
+function CreateButtons() {
+  return buttonName.map((eachButton, index) => {
+    return (
+      <ButtonProp
+        key={index}
+        name={eachButton}
+        whenClick={() => {
+          console.log('hello');
+        }}
+      />
+    );
+  });
+}
 
 function App() {
   return (
@@ -8,9 +33,7 @@ function App() {
       <h1>CV Application</h1>
       <section className="user-input">
         <div className="section-buttons">
-          <button className="show-general">General</button>
-          <button className="show-education">Education</button>
-          <button className="show-experience">Experience</button>
+          <CreateButtons />
         </div>
         <div className="section-input">
           <General />
