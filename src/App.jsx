@@ -5,9 +5,13 @@ import General from './components/General';
 
 const buttonName = ['General', 'Education', 'Experience'];
 
-function ButtonProp({ name, whenClick }) {
+function ButtonProp({ name, whenClick, changeColor }) {
   return (
-    <button className={`show-${name}`} onClick={whenClick}>
+    <button
+      className={`show-${name}`}
+      style={{ display: changeColor }}
+      onClick={whenClick}
+    >
       {name}
     </button>
   );
@@ -17,6 +21,7 @@ function CreateButtons({
   setHideGeneral,
   setHideEducation,
   setHideExperience,
+  setChangeColor,
 }) {
   return buttonName.map((eachButton, index) => {
     return (
@@ -28,14 +33,17 @@ function CreateButtons({
             setHideGeneral('');
             setHideEducation('none');
             setHideExperience('none');
+            setChangeColor('#777');
           } else if (eachButton === 'Education') {
             setHideGeneral('none');
             setHideEducation('');
             setHideExperience('none');
+            setChangeColor('#777');
           } else {
             setHideGeneral('none');
             setHideEducation('none');
             setHideExperience('');
+            setChangeColor('white');
           }
         }}
       />
@@ -47,16 +55,20 @@ function App() {
   const [hideEducation, setHideEducation] = useState('none');
   const [hideExperience, setHideExperience] = useState('none');
   const [hideGeneral, setHideGeneral] = useState('');
+  const [changeColor, setChangeColor] = useState('#777777');
 
   return (
     <>
-      <h1>CV Application</h1>
+      <div className="heading">
+        <h1>CV Application</h1>
+      </div>
       <section className="user-input">
         <div className="section-buttons">
           <CreateButtons
             setHideGeneral={setHideGeneral}
             setHideEducation={setHideEducation}
             setHideExperience={setHideExperience}
+            setChangeColor={setChangeColor}
           />
         </div>
         <div className="section-input">
