@@ -13,14 +13,30 @@ function ButtonProp({ name, whenClick }) {
   );
 }
 
-function CreateButtons() {
+function CreateButtons({
+  setHideGeneral,
+  setHideEducation,
+  setHideExperience,
+}) {
   return buttonName.map((eachButton, index) => {
     return (
       <ButtonProp
         key={index}
         name={eachButton}
         whenClick={() => {
-          console.log('hello');
+          if (eachButton === 'General') {
+            setHideGeneral('');
+            setHideEducation('none');
+            setHideExperience('none');
+          } else if (eachButton === 'Education') {
+            setHideGeneral('none');
+            setHideEducation('');
+            setHideExperience('none');
+          } else {
+            setHideGeneral('none');
+            setHideEducation('none');
+            setHideExperience('');
+          }
         }}
       />
     );
@@ -28,17 +44,25 @@ function CreateButtons() {
 }
 
 function App() {
+  const [hideEducation, setHideEducation] = useState('none');
+  const [hideExperience, setHideExperience] = useState('none');
+  const [hideGeneral, setHideGeneral] = useState('');
+
   return (
     <>
       <h1>CV Application</h1>
       <section className="user-input">
         <div className="section-buttons">
-          <CreateButtons />
+          <CreateButtons
+            setHideGeneral={setHideGeneral}
+            setHideEducation={setHideEducation}
+            setHideExperience={setHideExperience}
+          />
         </div>
         <div className="section-input">
-          <General />
-          <Education />
-          <Experience />
+          <General hideGeneral={hideGeneral} />
+          <Education hideEducation={hideEducation} />
+          <Experience hideExperience={hideExperience} />
         </div>
       </section>
     </>
