@@ -27,6 +27,7 @@ body {
 .user-input {
   display: grid;
   grid-template-columns: 20vw 80vw;
+  grid-template-rows: 90vh;
 }
 
 .section-buttons {
@@ -36,11 +37,20 @@ body {
 
   button {
     border: none;
-    background: none;
     font-size: 1.3rem;
     text-align: left;
-    margin-left: 40px;
+    padding-left: 40px;
   }
+}
+
+.show-General,
+.section-input {
+  background-color: #777777;
+}
+
+.show-Education,
+.show-Experience {
+  background-color: #1e1e1e;
 }
 
 .section-input {
