@@ -9,7 +9,7 @@ function ButtonProp({ name, whenClick, changeColor }) {
   return (
     <button
       className={`show-${name}`}
-      style={{ backgroundColor: changeColor }}
+      style={{ backgroundColor: changeColor ? '#777777' : '#1e1e1e' }}
       onClick={whenClick}
     >
       {name}
@@ -21,42 +21,25 @@ function CreateButtons({
   setHideGeneral,
   setHideEducation,
   setHideExperience,
-  setOnGeneral,
-  setOnEducation,
-  setOnExperience,
+  changeColor,
+  setChangeColor,
 }) {
-  const [changeColor, setChangeColor] = useState('');
-
   return buttonName.map((eachButton, index) => {
-    const handleChangeColor = () => {
-      setChangeColor('#1e1e1e');
-    };
-
     return (
       <ButtonProp
         key={index}
         name={eachButton}
-        changeColor={changeColor}
+        changeColor={changeColor === eachButton}
         whenClick={() => {
-          handleChangeColor();
+          setChangeColor(eachButton);
           if (eachButton === 'General') {
             setHideGeneral('');
             setHideEducation('none');
             setHideExperience('none');
-            setChangeColor(() => {
-              setOnGeneral('#777777');
-              setOnEducation('#1e1e1e');
-              setHideExperience('#1e1e1e');
-            });
           } else if (eachButton === 'Education') {
             setHideGeneral('none');
             setHideEducation('');
             setHideExperience('none');
-            setChangeColor(() => {
-              setOnGeneral('#1e1e1e');
-              setOnEducation('#777777');
-              setHideExperience('#1e1e1e');
-            });
           } else {
             setHideGeneral('none');
             setHideEducation('none');
@@ -72,9 +55,7 @@ function App() {
   const [hideEducation, setHideEducation] = useState('none');
   const [hideExperience, setHideExperience] = useState('none');
   const [hideGeneral, setHideGeneral] = useState('');
-  const [onGeneral, setOnGeneral] = useState('');
-  const [onEducation, setOnEducation] = useState('');
-  const [onExperience, setOnExperience] = useState('');
+  const [changeColor, setChangeColor] = useState('General');
 
   return (
     <>
@@ -87,9 +68,8 @@ function App() {
             setHideGeneral={setHideGeneral}
             setHideEducation={setHideEducation}
             setHideExperience={setHideExperience}
-            setOnGeneral={setOnGeneral}
-            setOnEducation={setOnEducation}
-            setOnExperience={setOnExperience}
+            setChangeColor={setChangeColor}
+            changeColor={changeColor}
           />
         </div>
         <div className="section-input">
