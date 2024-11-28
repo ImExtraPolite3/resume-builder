@@ -19,11 +19,11 @@ export default function Experience({ hideExperience, onExperience }) {
       </div>
       <div>
         <label htmlFor="start-date">Start Date:</label>
-        <input type="text" id="start-date" />
+        <input type="date" id="start-date" />
       </div>
       <div>
         <label htmlFor="end-date">End Date:</label>
-        <input type="text" id="end-date" />
+        <input type="date" id="end-date" />
       </div>
     </div>
   );
