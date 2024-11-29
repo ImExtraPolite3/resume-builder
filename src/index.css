@@ -43,6 +43,10 @@ body {
   }
 }
 
+.section-input {
+  overflow: scroll;
+}
+
 .show-General,
 .section-input {
   background-color: #777777;
@@ -61,7 +65,7 @@ body {
 
 .section-input {
   grid-column: 2 / 3;
-  padding-top: 70px;
+  padding: 70px 0;
 
   div {
     input,
@@ -72,6 +76,12 @@ body {
       color: black;
     }
   }
+}
+
+.education {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
 }
 
 .general,
