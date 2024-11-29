@@ -79,18 +79,28 @@ body {
 }
 
 .education {
+  width: 75%;
+  margin: auto;
   display: flex;
   flex-direction: column;
   gap: 20px;
 }
 
 .general,
-.education > div,
+.experience {
+  width: 70%;
+}
+
+.education > div > div {
+  width: 95%;
+}
+
+.general,
+.education > div > div,
 .experience {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 25px 80px;
-  width: 70%;
   margin: auto;
 
   div {
