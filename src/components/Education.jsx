@@ -1,7 +1,6 @@
-export default function Education({ clickEducation }) {
+export default function Education() {
   return (
     <div>
-      <button onClick={clickEducation}>+</button>
       <div>
         <label htmlFor="institution">Institution:</label>
         <input type="text" id="institution" />

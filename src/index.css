@@ -83,27 +83,27 @@ body {
   width: 70%;
   margin: auto;
 
-  button {
-    background-color: #1ca7e3;
-    border: none;
-    padding: 15px 20px;
-    font-size: 1.2rem;
-    position: absolute;
-    bottom: 50px;
-    right: 60px;
-    transition: transform 200ms;
-  }
-
-  button:hover {
-    cursor: pointer;
-    transform: scale(1.1);
-  }
-
   div {
     label {
       font-size: 1.3rem;
     }
   }
+}
+
+.education > button {
+  background-color: #1ca7e3;
+  border: none;
+  padding: 15px 20px;
+  font-size: 1.2rem;
+  position: absolute;
+  bottom: 50px;
+  right: 60px;
+  transition: transform 200ms;
+}
+
+.education > button:hover {
+  cursor: pointer;
+  transform: scale(1.1);
 }
 
 .general > div:last-child,
