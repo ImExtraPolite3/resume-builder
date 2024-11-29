@@ -1,10 +1,7 @@
-export default function Education({ hideEducation, onEducation }) {
+export default function Education({ clickEducation }) {
   return (
-    <div
-      className="education"
-      style={{ display: hideEducation, backgroundColor: onEducation }}
-    >
-      <button>+</button>
+    <div>
+      <button onClick={clickEducation}>+</button>
       <div>
         <label htmlFor="institution">Institution:</label>
         <input type="text" id="institution" />

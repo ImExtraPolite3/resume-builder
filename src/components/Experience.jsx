@@ -1,9 +1,6 @@
-export default function Experience({ hideExperience, onExperience }) {
+export default function Experience({ hideExperience }) {
   return (
-    <div
-      className="experience"
-      style={{ display: hideExperience, backgroundColor: onExperience }}
-    >
+    <div className="experience" style={{ display: hideExperience }}>
       <button>+</button>
       <div>
         <label htmlFor="work-title">Title:</label>

@@ -75,7 +75,7 @@ body {
 }
 
 .general,
-.education,
+.education > div,
 .experience {
   display: grid;
   grid-template-columns: repeat(2, 1fr);

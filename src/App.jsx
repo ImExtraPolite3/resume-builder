@@ -56,6 +56,11 @@ function App() {
   const [hideExperience, setHideExperience] = useState('none');
   const [hideGeneral, setHideGeneral] = useState('');
   const [changeColor, setChangeColor] = useState('General');
+  const [clickEducation, setClickEducation] = useState('');
+
+  const handleClickEducation = () => {
+    setClickEducation(<Education />);
+  };
 
   return (
     <>
@@ -74,7 +79,10 @@ function App() {
         </div>
         <div className="section-input">
           <General hideGeneral={hideGeneral} />
-          <Education hideEducation={hideEducation} />
+          <div className="education" style={{ display: hideEducation }}>
+            <Education clickEducation={handleClickEducation} />
+            {clickEducation}
+          </div>
           <Experience hideExperience={hideExperience} />
         </div>
       </section>
