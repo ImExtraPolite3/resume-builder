@@ -57,7 +57,9 @@ function App() {
   const [hideGeneral, setHideGeneral] = useState('');
   const [changeColor, setChangeColor] = useState('General');
   const [clickEducation, setClickEducation] = useState([]);
+  const [clickExperience, setClickExperience] = useState([]);
   const [schoolNum, setSchoolNum] = useState(2);
+  const [companyNum, setCompanyNum] = useState(2);
 
   const handleClickEducation = () => {
     setClickEducation([
@@ -65,6 +67,14 @@ function App() {
       <Education key={clickEducation.length} eduNum={schoolNum} />,
     ]);
     setSchoolNum((prevNum) => prevNum + 1);
+  };
+
+  const handleClickExperience = () => {
+    setClickExperience([
+      ...clickExperience,
+      <Experience key={clickExperience.length} expNum={companyNum} />,
+    ]);
+    setCompanyNum((prevNum) => prevNum + 1);
   };
 
   return (
@@ -90,8 +100,9 @@ function App() {
             {clickEducation}
           </div>
           <div className="experience" style={{ display: hideExperience }}>
-            <button onClick={handleClickEducation}>+</button>
+            <button onClick={handleClickExperience}>+</button>
             <Experience expNum={1} />
+            {clickExperience}
           </div>
         </div>
       </section>
