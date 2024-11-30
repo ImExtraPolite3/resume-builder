@@ -89,7 +89,10 @@ function App() {
             <Education eduNum={1} />
             {clickEducation}
           </div>
-          <Experience hideExperience={hideExperience} />
+          <div className="experience" style={{ display: hideExperience }}>
+            <button onClick={handleClickEducation}>+</button>
+            <Experience expNum={1} />
+          </div>
         </div>
       </section>
     </>
