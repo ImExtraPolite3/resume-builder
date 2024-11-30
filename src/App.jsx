@@ -2,6 +2,7 @@ import { useState } from 'react';
 import Education from './components/Education';
 import Experience from './components/Experience';
 import General from './components/General';
+import UserOutput from './components/UserOutput';
 
 const buttonName = ['General', 'Education', 'Experience'];
 
@@ -105,6 +106,9 @@ function App() {
             {clickExperience}
           </div>
         </div>
+      </section>
+      <section className="user-output">
+        <UserOutput />
       </section>
     </>
   );

@@ -30,6 +30,10 @@ body {
   grid-template-rows: 90vh;
 }
 
+.user-input {
+  display: none;
+}
+
 .section-buttons {
   grid-column: 1 / 2;
   display: grid;
