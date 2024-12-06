@@ -24,6 +24,7 @@ export default function Experience({ expNum }) {
           <input type="date" id="end-date" />
         </div>
       </div>
+      <button className="create-resume">Create Resume</button>
     </div>
   );
 }
