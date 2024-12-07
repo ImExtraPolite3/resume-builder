@@ -128,7 +128,7 @@ button {
 }
 
 .education > button,
-.experience > button {
+.experience > button:first-child {
   background-color: #1ca7e3;
   border: none;
   padding: 15px 20px;

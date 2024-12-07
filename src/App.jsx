@@ -104,6 +104,7 @@ function App() {
             <button onClick={handleClickExperience}>+</button>
             <Experience expNum={1} />
             {clickExperience}
+            <button className="create-resume">Create Resume</button>
           </div>
         </div>
       </section>
