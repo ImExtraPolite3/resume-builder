@@ -1,4 +1,8 @@
+import { useState } from 'react';
+
 export default function General({ hideGeneral, onGeneral }) {
+  const [firstName, setFirstName] = useState('');
+
   return (
     <div
       className="general"
@@ -6,7 +10,14 @@ export default function General({ hideGeneral, onGeneral }) {
     >
       <div>
         <label htmlFor="first-name">First Name: </label>
-        <input type="text" id="first-name" placeholder="John" />
+        <input
+          type="text"
+          id="first-name"
+          placeholder="John"
+          onChange={(e) => {
+            setFirstName(e.target.value);
+          }}
+        />
       </div>
       <div>
         <label htmlFor="last-name">Last Name: </label>
