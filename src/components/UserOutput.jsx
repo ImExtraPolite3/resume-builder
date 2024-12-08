@@ -1,8 +1,8 @@
-export default function UserOutput({ firstName }) {
+export default function UserOutput({ showFirstName }) {
   return (
     <>
       <div className="resume-general">
-        <h1>{firstName}</h1>
+        <h1>{showFirstName}</h1>
         <h1>Last Name</h1>
         <p>email</p>
         <p>phone number</p>

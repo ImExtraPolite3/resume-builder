@@ -63,6 +63,7 @@ function App() {
   const [companyNum, setCompanyNum] = useState(2);
   const [showResume, setShowResume] = useState('none');
   const [hideInfo, setHideInfo] = useState('');
+  const [firstName, setFirstName] = useState('');
 
   const handleInfo = () => {
     setShowResume('');
@@ -101,7 +102,10 @@ function App() {
           />
         </div>
         <div className="section-input">
-          <General hideGeneral={hideGeneral} />
+          <General
+            hideGeneral={hideGeneral}
+            setFirstName={(e) => setFirstName(e.target.value)}
+          />
           <div className="education" style={{ display: hideEducation }}>
             <button onClick={handleClickEducation}>+</button>
             <Education eduNum={1} />
@@ -118,7 +122,7 @@ function App() {
         </div>
       </section>
       <section className="user-output" style={{ display: showResume }}>
-        <UserOutput />
+        <UserOutput showFirstName={firstName} />
       </section>
     </>
   );

@@ -1,8 +1,4 @@
-import { useState } from 'react';
-
-export default function General({ hideGeneral, onGeneral }) {
-  const [firstName, setFirstName] = useState('');
-
+export default function General({ hideGeneral, onGeneral, setFirstName }) {
   return (
     <div
       className="general"
@@ -14,9 +10,7 @@ export default function General({ hideGeneral, onGeneral }) {
           type="text"
           id="first-name"
           placeholder="John"
-          onChange={(e) => {
-            setFirstName(e.target.value);
-          }}
+          onChange={setFirstName}
         />
       </div>
       <div>
