@@ -61,6 +61,13 @@ function App() {
   const [clickExperience, setClickExperience] = useState([]);
   const [schoolNum, setSchoolNum] = useState(2);
   const [companyNum, setCompanyNum] = useState(2);
+  const [showResume, setShowResume] = useState('none');
+  const [hideInfo, setHideInfo] = useState('');
+
+  const handleInfo = () => {
+    setShowResume('');
+    setHideInfo('none');
+  };
 
   const handleClickEducation = () => {
     setClickEducation([
@@ -83,7 +90,7 @@ function App() {
       <div className="heading">
         <h1>CV Application</h1>
       </div>
-      <section className="user-input">
+      <section className="user-input" style={{ display: hideInfo }}>
         <div className="section-buttons">
           <CreateButtons
             setHideGeneral={setHideGeneral}
@@ -104,11 +111,13 @@ function App() {
             <button onClick={handleClickExperience}>+</button>
             <Experience expNum={1} />
             {clickExperience}
-            <button className="create-resume">Create Resume</button>
+            <button className="create-resume" onClick={handleInfo}>
+              Create Resume
+            </button>
           </div>
         </div>
       </section>
-      <section className="user-output">
+      <section className="user-output" style={{ display: showResume }}>
         <UserOutput />
       </section>
     </>
