@@ -1,4 +1,12 @@
-export default function General({ hideGeneral, onGeneral, setFirstName }) {
+export default function General({
+  hideGeneral,
+  onGeneral,
+  setFirstName,
+  setLastName,
+  setEmail,
+  setPhoneNumber,
+  setSummary,
+}) {
   return (
     <div
       className="general"
@@ -15,7 +23,12 @@ export default function General({ hideGeneral, onGeneral, setFirstName }) {
       </div>
       <div>
         <label htmlFor="last-name">Last Name: </label>
-        <input type="text" id="last-name" placeholder="Doe" />
+        <input
+          type="text"
+          id="last-name"
+          placeholder="Doe"
+          onChange={setLastName}
+        />
       </div>
       <div>
         <label htmlFor="get-email">Email: </label>
@@ -24,6 +37,7 @@ export default function General({ hideGeneral, onGeneral, setFirstName }) {
           name="get-email"
           id="get-email"
           placeholder="johndoe@email.com"
+          onChange={setEmail}
         />
       </div>
       <div>
@@ -33,6 +47,7 @@ export default function General({ hideGeneral, onGeneral, setFirstName }) {
           name="get-phone-number"
           id="get-phone-number"
           placeholder="123-456-7890"
+          onChange={setPhoneNumber}
         />
       </div>
       <div>
@@ -41,6 +56,7 @@ export default function General({ hideGeneral, onGeneral, setFirstName }) {
           name="summary"
           id="summary"
           placeholder="I am very hardworking..."
+          onChange={setSummary}
         ></textarea>
       </div>
     </div>

@@ -63,7 +63,11 @@ function App() {
   const [companyNum, setCompanyNum] = useState(2);
   const [showResume, setShowResume] = useState('none');
   const [hideInfo, setHideInfo] = useState('');
-  const [firstName, setFirstName] = useState('');
+  const [firstName, setFirstName] = useState('John');
+  const [lastName, setLastName] = useState('Doe');
+  const [email, setEmail] = useState('johndoe@email.com');
+  const [phoneNumber, setPhoneNumber] = useState('123-459-7890');
+  const [summary, setSummary] = useState('I am very hardworking...');
 
   const handleInfo = () => {
     setShowResume('');
@@ -105,6 +109,10 @@ function App() {
           <General
             hideGeneral={hideGeneral}
             setFirstName={(e) => setFirstName(e.target.value)}
+            setLastName={(e) => setLastName(e.target.value)}
+            setEmail={(e) => setEmail(e.target.value)}
+            setPhoneNumber={(e) => setPhoneNumber(e.target.value)}
+            setSummary={(e) => setSummary(e.target.value)}
           />
           <div className="education" style={{ display: hideEducation }}>
             <button onClick={handleClickEducation}>+</button>
@@ -122,7 +130,13 @@ function App() {
         </div>
       </section>
       <section className="user-output" style={{ display: showResume }}>
-        <UserOutput showFirstName={firstName} />
+        <UserOutput
+          showFirstName={firstName}
+          showLastName={lastName}
+          showEmail={email}
+          showPhoneNumber={phoneNumber}
+          showSummary={summary}
+        />
       </section>
     </>
   );
