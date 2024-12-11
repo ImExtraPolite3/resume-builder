@@ -2,7 +2,7 @@ import { useState } from 'react';
 import Education from './components/Education';
 import Experience from './components/Experience';
 import General from './components/General';
-import UserOutput from './components/UserOutput';
+import UserOutput, { EducationSection } from './components/UserOutput';
 
 const buttonName = ['General', 'Education', 'Experience'];
 
@@ -68,6 +68,7 @@ function App() {
   const [email, setEmail] = useState('johndoe@email.com');
   const [phoneNumber, setPhoneNumber] = useState('123-459-7890');
   const [summary, setSummary] = useState('I am very hardworking...');
+  const [extraEducation, setExtraEducation] = useState('');
 
   const handleInfo = () => {
     setShowResume('');
@@ -80,6 +81,10 @@ function App() {
       <Education key={clickEducation.length} eduNum={schoolNum} />,
     ]);
     setSchoolNum((prevNum) => prevNum + 1);
+    setExtraEducation([
+      ...extraEducation,
+      <EducationSection key={clickEducation.length} />,
+    ]);
   };
 
   const handleClickExperience = () => {
@@ -136,6 +141,7 @@ function App() {
           showEmail={email}
           showPhoneNumber={phoneNumber}
           showSummary={summary}
+          createEducationSection={extraEducation}
         />
       </section>
     </>
