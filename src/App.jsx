@@ -1,4 +1,5 @@
 import CreateGeneralInputs from './components/General';
+import UserOutput from './components/UserOutput';
 
 function App() {
   return (
@@ -6,7 +7,9 @@ function App() {
       <div className="user-input">
         <CreateGeneralInputs />
       </div>
-      <div className="user-output"></div>
+      <div className="user-output">
+        <UserOutput />
+      </div>
     </div>
   );
 }
