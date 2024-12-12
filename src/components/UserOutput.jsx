@@ -11,6 +11,18 @@ function EducationSection() {
   );
 }
 
+function ExperienceSection() {
+  return (
+    <div className="resume-experience">
+      <p>work title</p>
+      <p>company</p>
+      <p>office location</p>
+      <p>start date</p>
+      <p>end date</p>
+    </div>
+  );
+}
+
 export default function UserOutput({
   showFirstName,
   showLastName,
@@ -18,6 +30,7 @@ export default function UserOutput({
   showPhoneNumber,
   showSummary,
   createEducationSection,
+  createExperienceSection,
 }) {
   return (
     <>
@@ -30,15 +43,10 @@ export default function UserOutput({
       </div>
       <EducationSection />
       {createEducationSection}
-      <div className="resume-experience">
-        <p>work title</p>
-        <p>company</p>
-        <p>office location</p>
-        <p>start date</p>
-        <p>end date</p>
-      </div>
+      <ExperienceSection />
+      {createExperienceSection}
     </>
   );
 }
 
-export { EducationSection };
+export { EducationSection, ExperienceSection };

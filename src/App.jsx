@@ -2,7 +2,10 @@ import { useState } from 'react';
 import Education from './components/Education';
 import Experience from './components/Experience';
 import General from './components/General';
-import UserOutput, { EducationSection } from './components/UserOutput';
+import UserOutput, {
+  EducationSection,
+  ExperienceSection,
+} from './components/UserOutput';
 
 const buttonName = ['General', 'Education', 'Experience'];
 
@@ -69,6 +72,7 @@ function App() {
   const [phoneNumber, setPhoneNumber] = useState('123-459-7890');
   const [summary, setSummary] = useState('I am very hardworking...');
   const [extraEducation, setExtraEducation] = useState('');
+  const [extraExperience, setExtraExperience] = useState('');
 
   const handleInfo = () => {
     setShowResume('');
@@ -93,6 +97,10 @@ function App() {
       <Experience key={clickExperience.length} expNum={companyNum} />,
     ]);
     setCompanyNum((prevNum) => prevNum + 1);
+    setExtraExperience([
+      ...extraExperience,
+      <ExperienceSection key={clickExperience.length} />,
+    ]);
   };
 
   return (
@@ -142,6 +150,7 @@ function App() {
           showPhoneNumber={phoneNumber}
           showSummary={summary}
           createEducationSection={extraEducation}
+          createExperienceSection={extraExperience}
         />
       </section>
     </>
