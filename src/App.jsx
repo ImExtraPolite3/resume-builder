@@ -1,5 +1,7 @@
+import CreateGeneralInputs from './components/General';
+
 function App() {
-  return <h1>Hello</h1>;
+  return <CreateGeneralInputs />;
 }
 
 export default App;
