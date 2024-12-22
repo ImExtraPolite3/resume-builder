@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import GeneralInput from './components/General';
-// import UserOutput from './components/UserOutput';
+import GeneralOutput from './components/UserOutput';
 
 function App() {
   const [inputValues, setInputValues] = useState({});
@@ -13,10 +13,18 @@ function App() {
   };
 
   return (
-    <div className="full-page">
-      <h1 className="full-name"></h1>
-      <GeneralInput onChange={handleValues} inputValue={inputValues} />
-    </div>
+    <>
+      <div className="input">
+        <GeneralInput onChange={handleValues} inputValue={inputValues} />
+      </div>
+      <div className="output">
+        {[...Array(3)].map((e, index) => {
+          return (
+            <GeneralOutput key={index} generalValues={inputValues[index]} />
+          );
+        })}
+      </div>
+    </>
   );
 }
 

@@ -12,7 +12,6 @@ export default function GeneralInput({ onChange, inputValue }) {
   return generalInput.class.map((name, index) => {
     return (
       <>
-        <GeneralOutput generalValues={inputValue[index]} />
         <Inputs
           key={index}
           idName={name}
