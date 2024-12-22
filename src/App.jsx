@@ -1,29 +1,23 @@
 import { useState } from 'react';
-import GeneralInput from './components/General';
-import GeneralOutput from './components/UserOutput';
+import GeneralInfo from './components/General';
 
 function App() {
-  const [inputValues, setInputValues] = useState({});
+  const [displayName, setDisplayName] = useState('John Doe');
+  const [displayEmail, setDisplayEmail] = useState('johndoe@email.com');
 
-  const handleValues = (e, index) => {
-    setInputValues({
-      ...inputValues,
-      [index]: e.target.value,
-    });
+  const handleDisplay = (e) => {
+    setDisplayName(e);
+  };
+
+  const handleEmail = (e) => {
+    setDisplayEmail(e);
   };
 
   return (
     <>
-      <div className="input">
-        <GeneralInput onChange={handleValues} inputValue={inputValues} />
-      </div>
-      <div className="output">
-        {[...Array(3)].map((e, index) => {
-          return (
-            <GeneralOutput key={index} generalValues={inputValues[index]} />
-          );
-        })}
-      </div>
+      <h1>{displayName}</h1>
+      <p>{displayEmail}</p>
+      <GeneralInfo fullName={handleDisplay} email={handleEmail} />
     </>
   );
 }
