@@ -37,6 +37,9 @@ export default function UserOutput() {
     endDate: '2022-05-24',
   });
 
+  const [addEducation, setAddEducation] = useState([]);
+  const [addEducationOutput, setAddEducationOutput] = useState([]);
+
   const handleFullName = (newName) => {
     setGeneralOutput((prevName) => ({ ...prevName, fullName: newName }));
   };
@@ -80,6 +83,30 @@ export default function UserOutput() {
     }));
   };
 
+  const handleAddEducation = () => {
+    setAddEducation((prevAddEducation, index) => [
+      ...prevAddEducation,
+      <EducationInfo
+        key={index}
+        schoolName={handleSchoolName}
+        major={handleMajor}
+        startDate={handleSchoolStart}
+        endDate={handleSchoolEnd}
+      />,
+    ]);
+
+    setAddEducationOutput((prevEducationOutput, index) => [
+      ...prevEducationOutput,
+      <EducationOutput
+        key={index}
+        schoolName={educationOutput.schoolName}
+        major={educationOutput.major}
+        startDate={educationOutput.startDate}
+        endDate={educationOutput.endDate}
+      />,
+    ]);
+  };
+
   return (
     <>
       <div className="user-input">
@@ -89,13 +116,17 @@ export default function UserOutput() {
             email={handleEmail}
             phoneNumber={handlePhoneNumber}
           />
+          <div className="education-input">
+            <EducationInfo
+              schoolName={handleSchoolName}
+              major={handleMajor}
+              startDate={handleSchoolStart}
+              endDate={handleSchoolEnd}
+            />
+            {addEducation}
 
-          <EducationInfo
-            schoolName={handleSchoolName}
-            major={handleMajor}
-            startDate={handleSchoolStart}
-            endDate={handleSchoolEnd}
-          />
+            <button onClick={handleAddEducation}>add education</button>
+          </div>
         </div>
       </div>
       <div className="user-output">
@@ -111,6 +142,7 @@ export default function UserOutput() {
           startDate={educationOutput.startDate}
           endDate={educationOutput.endDate}
         />
+        {addEducationOutput}
       </div>
     </>
   );
