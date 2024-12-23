@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import GeneralInfo from './General';
+import EducationInfo from './Education';
 
 function GeneralOutput({ fullName, email, phoneNumber }) {
   return (
@@ -11,11 +12,29 @@ function GeneralOutput({ fullName, email, phoneNumber }) {
   );
 }
 
+function EducationOutput({ schoolName, major, startDate, endDate }) {
+  return (
+    <>
+      <p>{schoolName}</p>
+      <p>{major}</p>
+      <p>{startDate}</p>
+      <p>{endDate}</p>
+    </>
+  );
+}
+
 export default function UserOutput() {
   const [generalOutput, setGeneralOutput] = useState({
     fullName: 'John Doe',
     email: 'johndoe@email.com',
     phoneNumber: '1234567890',
+  });
+
+  const [educationOutput, setEducatioOutput] = useState({
+    schoolName: 'Random School',
+    major: 'Computer Science',
+    startDate: '',
+    endDate: '',
   });
 
   const handleFullName = (newName) => {
@@ -42,6 +61,8 @@ export default function UserOutput() {
             email={handleEmail}
             phoneNumber={handlePhoneNumber}
           />
+
+          <EducationInfo />
         </div>
       </div>
       <div className="user-output">
@@ -49,6 +70,13 @@ export default function UserOutput() {
           fullName={generalOutput.fullName}
           email={generalOutput.email}
           phoneNumber={generalOutput.phoneNumber}
+        />
+
+        <EducationOutput
+          schoolName={educationOutput.schoolName}
+          major={educationOutput.major}
+          startDate={educationOutput.startDate}
+          endDate={educationOutput.endDate}
         />
       </div>
     </>
