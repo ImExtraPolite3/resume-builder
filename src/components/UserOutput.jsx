@@ -33,8 +33,8 @@ export default function UserOutput() {
   const [educationOutput, setEducatioOutput] = useState({
     schoolName: 'Random School',
     major: 'Computer Science',
-    startDate: '',
-    endDate: '',
+    startDate: '2019-08-29',
+    endDate: '2022-05-24',
   });
 
   const handleFullName = (newName) => {
@@ -52,6 +52,34 @@ export default function UserOutput() {
     }));
   };
 
+  const handleSchoolName = (newSchool) => {
+    setEducatioOutput((prevSchool) => ({
+      ...prevSchool,
+      schoolName: newSchool,
+    }));
+  };
+
+  const handleMajor = (newMajor) => {
+    setEducatioOutput((prevMajor) => ({
+      ...prevMajor,
+      major: newMajor,
+    }));
+  };
+
+  const handleSchoolStart = (newStart) => {
+    setEducatioOutput((prevStart) => ({
+      ...prevStart,
+      startDate: newStart,
+    }));
+  };
+
+  const handleSchoolEnd = (newEnd) => {
+    setEducatioOutput((prevEnd) => ({
+      ...prevEnd,
+      endDate: newEnd,
+    }));
+  };
+
   return (
     <>
       <div className="user-input">
@@ -62,7 +90,12 @@ export default function UserOutput() {
             phoneNumber={handlePhoneNumber}
           />
 
-          <EducationInfo />
+          <EducationInfo
+            schoolName={handleSchoolName}
+            major={handleMajor}
+            startDate={handleSchoolStart}
+            endDate={handleSchoolEnd}
+          />
         </div>
       </div>
       <div className="user-output">
