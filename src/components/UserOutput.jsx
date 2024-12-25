@@ -1,20 +1,24 @@
-function GeneralOutput({ generalTitle, generalName, generalAge }) {
+function GeneralOutput({ generalName, generalEmail, generalPhoneNumber }) {
   return (
     <>
-      <h1>{generalTitle}</h1>
-      <p>{generalName}</p>
-      <p>{generalAge}</p>
+      <h1>{generalName}</h1>
+      <p>{generalEmail}</p>
+      <p>{generalPhoneNumber}</p>
     </>
   );
 }
 
-export default function UserOutput({ generalTitle, generalName, generalAge }) {
+export default function UserOutput({
+  generalName,
+  generalEmail,
+  generalPhoneNumber,
+}) {
   return (
     <>
       <GeneralOutput
-        generalTitle={generalTitle}
         generalName={generalName}
-        generalAge={generalAge}
+        generalEmail={generalEmail}
+        generalPhoneNumber={generalPhoneNumber}
       />
     </>
   );

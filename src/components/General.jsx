@@ -1,5 +1,5 @@
 const generalInfo = {
-  idName: ['full-name', 'email', 'phone-number'],
+  idName: ['name', 'email', 'phoneNumber'],
   type: ['text', 'email', 'number'],
 };
 
@@ -8,18 +8,14 @@ function CreateInfo({ idName, type, onChange }) {
 }
 
 export default function GeneralInfo({ onChange }) {
-  return (
-    <div className="general-info">
-      {generalInfo.idName.map((info, index) => {
-        return (
-          <CreateInfo
-            key={index}
-            idName={info}
-            type={generalInfo.type[index]}
-            onChange={onChange}
-          />
-        );
-      })}
-    </div>
-  );
+  return generalInfo.idName.map((info, index) => {
+    return (
+      <CreateInfo
+        key={index}
+        idName={info}
+        type={generalInfo.type[index]}
+        onChange={onChange}
+      />
+    );
+  });
 }
