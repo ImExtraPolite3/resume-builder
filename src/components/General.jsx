@@ -1,9 +1,25 @@
-export default function GeneralInfo({ fullName, email, phoneNumber }) {
+const generalInfo = {
+  idName: ['full-name', 'email', 'phone-number'],
+  type: ['text', 'email', 'number'],
+};
+
+function CreateInfo({ idName, type, onChange }) {
+  return <input type={type} id={idName} onChange={onChange} />;
+}
+
+export default function GeneralInfo({ onChange }) {
   return (
     <div className="general-info">
-      <input type="text" onChange={(e) => fullName(e.target.value)} />
-      <input type="email" onChange={(e) => email(e.target.value)} />
-      <input type="number" onChange={(e) => phoneNumber(e.target.value)} />
+      {generalInfo.idName.map((info, index) => {
+        return (
+          <CreateInfo
+            key={index}
+            idName={info}
+            type={generalInfo.type[index]}
+            onChange={onChange}
+          />
+        );
+      })}
     </div>
   );
 }

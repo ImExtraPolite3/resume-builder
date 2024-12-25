@@ -1,149 +1,21 @@
-import { useState } from 'react';
-import GeneralInfo from './General';
-import EducationInfo from './Education';
-
-function GeneralOutput({ fullName, email, phoneNumber }) {
+function GeneralOutput({ generalTitle, generalName, generalAge }) {
   return (
     <>
-      <h1>{fullName}</h1>
-      <p>{email}</p>
-      <p>{phoneNumber}</p>
+      <h1>{generalTitle}</h1>
+      <p>{generalName}</p>
+      <p>{generalAge}</p>
     </>
   );
 }
 
-function EducationOutput({ schoolName, major, startDate, endDate }) {
+export default function UserOutput({ generalTitle, generalName, generalAge }) {
   return (
     <>
-      <p>{schoolName}</p>
-      <p>{major}</p>
-      <p>{startDate}</p>
-      <p>{endDate}</p>
-    </>
-  );
-}
-
-export default function UserOutput() {
-  const [generalOutput, setGeneralOutput] = useState({
-    fullName: 'John Doe',
-    email: 'johndoe@email.com',
-    phoneNumber: '1234567890',
-  });
-
-  const [educationOutput, setEducatioOutput] = useState({
-    schoolName: 'Random School',
-    major: 'Computer Science',
-    startDate: '2019-08-29',
-    endDate: '2022-05-24',
-  });
-
-  const [addEducation, setAddEducation] = useState([]);
-  const [addEducationOutput, setAddEducationOutput] = useState([]);
-
-  const handleFullName = (newName) => {
-    setGeneralOutput((prevName) => ({ ...prevName, fullName: newName }));
-  };
-
-  const handleEmail = (newEmail) => {
-    setGeneralOutput((prevEmail) => ({ ...prevEmail, email: newEmail }));
-  };
-
-  const handlePhoneNumber = (newPhoneNumber) => {
-    setGeneralOutput((prevPhoneNumber) => ({
-      ...prevPhoneNumber,
-      phoneNumber: newPhoneNumber,
-    }));
-  };
-
-  const handleSchoolName = (newSchool) => {
-    setEducatioOutput((prevSchool) => ({
-      ...prevSchool,
-      schoolName: newSchool,
-    }));
-  };
-
-  const handleMajor = (newMajor) => {
-    setEducatioOutput((prevMajor) => ({
-      ...prevMajor,
-      major: newMajor,
-    }));
-  };
-
-  const handleSchoolStart = (newStart) => {
-    setEducatioOutput((prevStart) => ({
-      ...prevStart,
-      startDate: newStart,
-    }));
-  };
-
-  const handleSchoolEnd = (newEnd) => {
-    setEducatioOutput((prevEnd) => ({
-      ...prevEnd,
-      endDate: newEnd,
-    }));
-  };
-
-  const handleAddEducation = () => {
-    setAddEducation((prevAddEducation, index) => [
-      ...prevAddEducation,
-      <EducationInfo
-        key={index}
-        schoolName={handleSchoolName}
-        major={handleMajor}
-        startDate={handleSchoolStart}
-        endDate={handleSchoolEnd}
-      />,
-    ]);
-
-    setAddEducationOutput((prevEducationOutput, index) => [
-      ...prevEducationOutput,
-      <EducationOutput
-        key={index}
-        schoolName={educationOutput.schoolName}
-        major={educationOutput.major}
-        startDate={educationOutput.startDate}
-        endDate={educationOutput.endDate}
-      />,
-    ]);
-  };
-
-  return (
-    <>
-      <div className="user-input">
-        <div className="general-input">
-          <GeneralInfo
-            fullName={handleFullName}
-            email={handleEmail}
-            phoneNumber={handlePhoneNumber}
-          />
-          <div className="education-input">
-            <EducationInfo
-              schoolName={handleSchoolName}
-              major={handleMajor}
-              startDate={handleSchoolStart}
-              endDate={handleSchoolEnd}
-            />
-            {addEducation}
-
-            <button onClick={handleAddEducation}>add education</button>
-          </div>
-        </div>
-      </div>
-      <div className="user-output">
-        <GeneralOutput
-          fullName={generalOutput.fullName}
-          email={generalOutput.email}
-          phoneNumber={generalOutput.phoneNumber}
-        />
-
-        <EducationOutput
-          schoolName={educationOutput.schoolName}
-          major={educationOutput.major}
-          startDate={educationOutput.startDate}
-          endDate={educationOutput.endDate}
-        />
-        {addEducationOutput}
-      </div>
+      <GeneralOutput
+        generalTitle={generalTitle}
+        generalName={generalName}
+        generalAge={generalAge}
+      />
     </>
   );
 }

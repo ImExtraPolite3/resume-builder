@@ -1,9 +1,15 @@
+import GeneralInfo from './components/General';
 import UserOutput from './components/UserOutput';
 
 function App() {
   return (
     <>
-      <UserOutput />
+      <div className="user-input">
+        <GeneralInfo />
+      </div>
+      <div className="user-output">
+        <UserOutput />
+      </div>
     </>
   );
 }
