@@ -8,6 +8,22 @@ function GeneralOutput({ generalName, generalEmail, generalPhoneNumber }) {
   );
 }
 
+function EducationOutput({
+  educationName,
+  educationLocation,
+  educationStartDate,
+  educationEndDate,
+}) {
+  return (
+    <>
+      <p>{educationName}</p>
+      <p>{educationLocation}</p>
+      <p>{educationStartDate}</p>
+      <p>{educationEndDate}</p>
+    </>
+  );
+}
+
 export default function UserOutput({
   generalName,
   generalEmail,
@@ -15,11 +31,16 @@ export default function UserOutput({
 }) {
   return (
     <>
-      <GeneralOutput
-        generalName={generalName}
-        generalEmail={generalEmail}
-        generalPhoneNumber={generalPhoneNumber}
-      />
+      <div className="general-output">
+        <GeneralOutput
+          generalName={generalName}
+          generalEmail={generalEmail}
+          generalPhoneNumber={generalPhoneNumber}
+        />
+      </div>
+      <div className="education-output"></div>
     </>
   );
 }
+
+export { EducationOutput };
