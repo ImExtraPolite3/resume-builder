@@ -12,9 +12,9 @@ function App() {
 
   const [education, setEducation] = useState({
     schoolName0: 'Random School',
-    schoolLocation1: 'Random Location',
-    schoolStartDate2: '2019-08-29',
-    schoolEndDate3: '2022-05-21',
+    schoolLocation0: 'Random Location',
+    schoolStartDate0: '2019-08-29',
+    schoolEndDate0: '2022-05-21',
   });
 
   const handleGeneral = (e) => {
@@ -42,7 +42,7 @@ function App() {
           <GeneralInfo onChange={handleGeneral} />
         </div>
         <div className="education-input">
-          <EducationInfo onChange={handleEducation} />
+          <EducationInfo onChange={handleEducation} num={0} />
         </div>
       </div>
       <div className="user-output">
@@ -53,9 +53,9 @@ function App() {
         />
         <EducationOutput
           educationName={education.schoolName0}
-          educationLocation={education.schoolLocation1}
-          educationStartDate={education.schoolStartDate2}
-          educationEndDate={education.schoolEndDate3}
+          educationLocation={education.schoolLocation0}
+          educationStartDate={education.schoolStartDate0}
+          educationEndDate={education.schoolEndDate0}
         />
       </div>
     </>
