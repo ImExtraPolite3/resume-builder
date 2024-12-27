@@ -2,6 +2,7 @@ import { useState } from 'react';
 import GeneralInfo from './components/General';
 import EducationInfo from './components/Education';
 import UserOutput, { EducationOutput } from './components/UserOutput';
+import ExperienceInfo from './components/Experience';
 
 function App() {
   const [general, setGeneral] = useState({
@@ -16,6 +17,15 @@ function App() {
       schoolLocation: 'Random Location',
       schoolStartDate: '2019-08-29',
       schoolEndDate: '2022-05-21',
+    },
+  ]);
+
+  const [experienceList, setExperienceList] = useState([
+    {
+      companyName: 'Random Company',
+      companyLocation: 'Random Company Location',
+      companyStartDate: '2022-06-01',
+      companyEndDate: '2024-11-21',
     },
   ]);
 
@@ -53,6 +63,15 @@ function App() {
     ]);
   };
 
+  const handleExperienceChange = (e) => {
+    const { id, value } = e.target;
+
+    setExperienceList((prevExp) => ({
+      ...prevExp,
+      [id]: value,
+    }));
+  };
+
   return (
     <>
       <div className="user-input">
@@ -63,11 +82,17 @@ function App() {
           {educationList.map((education, index) => (
             <EducationInfo
               key={index}
-              num={index}
               onChange={(e) => handleEducationChange(index, e)}
             />
           ))}
           <button onClick={handleNewEducation}>Add Education</button>
+        </div>
+        <div className="experience-input">
+          {experienceList.map((e, index) => {
+            return (
+              <ExperienceInfo key={index} onChange={handleExperienceChange} />
+            );
+          })}
         </div>
       </div>
       <div className="user-output">
