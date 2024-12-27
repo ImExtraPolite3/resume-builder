@@ -3,11 +3,11 @@ const educationInfo = {
   type: ['input', 'input', 'date', 'date'],
 };
 
-function CreateInfo({ idName, type, onChange, num }) {
-  return <input type={type} id={`${idName}${num}`} onChange={onChange} />;
+function CreateInfo({ idName, type, onChange }) {
+  return <input type={type} id={`${idName}`} onChange={onChange} />;
 }
 
-export default function EducationInfo({ onChange, num }) {
+export default function EducationInfo({ onChange }) {
   return educationInfo.idName.map((name, index) => {
     return (
       <CreateInfo
@@ -15,7 +15,6 @@ export default function EducationInfo({ onChange, num }) {
         type={educationInfo.type[index]}
         idName={name}
         onChange={onChange}
-        num={num}
       />
     );
   });

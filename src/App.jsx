@@ -10,58 +10,47 @@ function App() {
     phoneNumber: '1234567890',
   });
 
-  const [education, setEducation] = useState({
-    schoolName0: 'Random School',
-    schoolLocation0: 'Random Location',
-    schoolStartDate0: '2019-08-29',
-    schoolEndDate0: '2022-05-21',
-  });
-
-  const [newEducation, setNewEducation] = useState([]);
-  const [newEducationOutput, setNewEducationOutput] = useState([]);
+  const [educationList, setEducationList] = useState([
+    {
+      schoolName: 'Random School',
+      schoolLocation: 'Random Location',
+      schoolStartDate: '2019-08-29',
+      schoolEndDate: '2022-05-21',
+    },
+  ]);
 
   const handleGeneral = (e) => {
     const { id, value } = e.target;
-
     setGeneral((prevText) => ({
       ...prevText,
       [id]: value,
     }));
   };
 
-  const handleEducation = (e) => {
+  const handleEducationChange = (index, e) => {
     const { id, value } = e.target;
-
-    setEducation((prevText) => ({
-      ...prevText,
-      [id]: value,
-    }));
+    setEducationList((prevList) =>
+      prevList.map((education, i) =>
+        i === index
+          ? {
+              ...education,
+              [id]: value,
+            }
+          : education
+      )
+    );
   };
 
   const handleNewEducation = () => {
-    let num = 1;
-
-    setNewEducation((prevEducation) => [
-      ...prevEducation,
-      <EducationInfo
-        key={prevEducation.length}
-        onChange={handleEducation}
-        num={num}
-      />,
+    setEducationList((prevList) => [
+      ...prevList,
+      {
+        schoolName: '',
+        schoolLocation: '',
+        schoolStartDate: '',
+        schoolEndDate: '',
+      },
     ]);
-
-    setNewEducationOutput((prevOutput) => [
-      ...prevOutput,
-      <EducationOutput
-        key={prevOutput.length}
-        educationName={education.schoolName0}
-        educationLocation={education.schoolLocation0}
-        educationStartDate={education.schoolStartDate0}
-        educationEndDate={education.schoolEndDate0}
-      />,
-    ]);
-
-    num++;
   };
 
   return (
@@ -71,9 +60,14 @@ function App() {
           <GeneralInfo onChange={handleGeneral} />
         </div>
         <div className="education-input">
-          <EducationInfo onChange={handleEducation} num={0} />
-          {newEducation}
-          <button onClick={handleNewEducation}>add education</button>
+          {educationList.map((education, index) => (
+            <EducationInfo
+              key={index}
+              num={index}
+              onChange={(e) => handleEducationChange(index, e)}
+            />
+          ))}
+          <button onClick={handleNewEducation}>Add Education</button>
         </div>
       </div>
       <div className="user-output">
@@ -82,13 +76,15 @@ function App() {
           generalEmail={general.email}
           generalPhoneNumber={general.phoneNumber}
         />
-        <EducationOutput
-          educationName={education.schoolName0}
-          educationLocation={education.schoolLocation0}
-          educationStartDate={education.schoolStartDate0}
-          educationEndDate={education.schoolEndDate0}
-        />
-        {newEducationOutput}
+        {educationList.map((education, index) => (
+          <EducationOutput
+            key={index}
+            educationName={education.schoolName}
+            educationLocation={education.schoolLocation}
+            educationStartDate={education.schoolStartDate}
+            educationEndDate={education.schoolEndDate}
+          />
+        ))}
       </div>
     </>
   );
