@@ -1,7 +1,10 @@
 import { useState } from 'react';
 import GeneralInfo from './components/General';
 import EducationInfo from './components/Education';
-import UserOutput, { EducationOutput } from './components/UserOutput';
+import UserOutput, {
+  EducationOutput,
+  ExperienceOutput,
+} from './components/UserOutput';
 import ExperienceInfo from './components/Experience';
 
 function App() {
@@ -63,13 +66,23 @@ function App() {
     ]);
   };
 
-  const handleExperienceChange = (e) => {
+  const handleExperienceChange = (index, e) => {
     const { id, value } = e.target;
+    setExperienceList((prevExp) =>
+      prevExp.map((exp, i) => (i === index ? { ...exp, [id]: value } : exp))
+    );
+  };
 
-    setExperienceList((prevExp) => ({
-      ...prevExp,
-      [id]: value,
-    }));
+  const handleNewExperience = () => {
+    setExperienceList((prevList) => [
+      ...prevList,
+      {
+        companyName: '',
+        companyLocation: '',
+        companyStartDate: '',
+        companyEndDate: '',
+      },
+    ]);
   };
 
   return (
@@ -90,9 +103,13 @@ function App() {
         <div className="experience-input">
           {experienceList.map((e, index) => {
             return (
-              <ExperienceInfo key={index} onChange={handleExperienceChange} />
+              <ExperienceInfo
+                key={index}
+                onChange={(e) => handleExperienceChange(index, e)}
+              />
             );
           })}
+          <button onClick={handleNewExperience}>add experience</button>
         </div>
       </div>
       <div className="user-output">
@@ -101,15 +118,30 @@ function App() {
           generalEmail={general.email}
           generalPhoneNumber={general.phoneNumber}
         />
-        {educationList.map((education, index) => (
-          <EducationOutput
-            key={index}
-            educationName={education.schoolName}
-            educationLocation={education.schoolLocation}
-            educationStartDate={education.schoolStartDate}
-            educationEndDate={education.schoolEndDate}
-          />
-        ))}
+        <div>
+          {educationList.map((education, index) => (
+            <EducationOutput
+              key={index}
+              educationName={education.schoolName}
+              educationLocation={education.schoolLocation}
+              educationStartDate={education.schoolStartDate}
+              educationEndDate={education.schoolEndDate}
+            />
+          ))}
+        </div>
+        <div>
+          {experienceList.map((experience, index) => {
+            return (
+              <ExperienceOutput
+                key={index}
+                companyName={experience.companyName}
+                companyLocation={experience.companyLocation}
+                companyStartDate={experience.companyStartDate}
+                companyEndDate={experience.companyEndDate}
+              />
+            );
+          })}
+        </div>
       </div>
     </>
   );

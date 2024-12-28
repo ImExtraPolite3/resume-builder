@@ -24,6 +24,22 @@ function EducationOutput({
   );
 }
 
+function ExperienceOutput({
+  companyName,
+  companyLocation,
+  companyStartDate,
+  companyEndDate,
+}) {
+  return (
+    <>
+      <p>{companyName}</p>
+      <p>{companyLocation}</p>
+      <p>{companyStartDate}</p>
+      <p>{companyEndDate}</p>
+    </>
+  );
+}
+
 export default function UserOutput({
   generalName,
   generalEmail,
@@ -43,4 +59,4 @@ export default function UserOutput({
   );
 }
 
-export { EducationOutput };
+export { EducationOutput, ExperienceOutput };
