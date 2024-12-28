@@ -1,4 +1,4 @@
-function GeneralOutput({ generalName, generalEmail, generalPhoneNumber }) {
+function General({ generalName, generalEmail, generalPhoneNumber }) {
   return (
     <>
       <h1>{generalName}</h1>
@@ -40,22 +40,17 @@ function ExperienceOutput({
   );
 }
 
-export default function UserOutput({
+export default function GeneralOutput({
   generalName,
   generalEmail,
   generalPhoneNumber,
 }) {
   return (
-    <>
-      <div className="general-output">
-        <GeneralOutput
-          generalName={generalName}
-          generalEmail={generalEmail}
-          generalPhoneNumber={generalPhoneNumber}
-        />
-      </div>
-      <div className="education-output"></div>
-    </>
+    <General
+      generalName={generalName}
+      generalEmail={generalEmail}
+      generalPhoneNumber={generalPhoneNumber}
+    />
   );
 }
 

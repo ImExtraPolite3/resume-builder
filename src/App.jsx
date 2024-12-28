@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import GeneralInfo from './components/General';
 import EducationInfo from './components/Education';
-import UserOutput, {
+import GeneralOutput, {
   EducationOutput,
   ExperienceOutput,
 } from './components/UserOutput';
@@ -113,12 +113,14 @@ function App() {
         </div>
       </div>
       <div className="user-output">
-        <UserOutput
-          generalName={general.name}
-          generalEmail={general.email}
-          generalPhoneNumber={general.phoneNumber}
-        />
-        <div>
+        <div className="general-output">
+          <GeneralOutput
+            generalName={general.name}
+            generalEmail={general.email}
+            generalPhoneNumber={general.phoneNumber}
+          />
+        </div>
+        <div className="education-output">
           {educationList.map((education, index) => (
             <EducationOutput
               key={index}
@@ -129,7 +131,7 @@ function App() {
             />
           ))}
         </div>
-        <div>
+        <div className="experience-output">
           {experienceList.map((experience, index) => {
             return (
               <ExperienceOutput
