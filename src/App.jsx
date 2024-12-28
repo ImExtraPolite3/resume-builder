@@ -32,6 +32,26 @@ function App() {
     },
   ]);
 
+  const [hideGeneral, setHideGeneral] = useState('');
+  const [hideEducation, setHideEducation] = useState('none');
+  const [hideExperience, setHideExperience] = useState('none');
+
+  const hideSections = (e) => {
+    if (e.target.textContent === 'General') {
+      setHideGeneral('');
+      setHideEducation('none');
+      setHideExperience('none');
+    } else if (e.target.textContent === 'Education') {
+      setHideGeneral('none');
+      setHideEducation('');
+      setHideExperience('none');
+    } else {
+      setHideGeneral('none');
+      setHideEducation('none');
+      setHideExperience('');
+    }
+  };
+
   const handleGeneral = (e) => {
     const { id, value } = e.target;
     setGeneral((prevText) => ({
@@ -87,11 +107,28 @@ function App() {
 
   return (
     <>
+      <div className="header">
+        <h1>Resume Builder</h1>
+      </div>
+      <div className="nav-section">
+        <button className="general-button" onClick={hideSections}>
+          General
+        </button>
+        <button className="education-button" onClick={hideSections}>
+          Education
+        </button>
+        <button className="experience-button" onClick={hideSections}>
+          Experience
+        </button>
+      </div>
       <div className="user-input">
-        <div className="general-input">
+        <div className="general-input" style={{ display: hideGeneral }}>
+          <h2>General Section</h2>
           <GeneralInfo onChange={handleGeneral} />
         </div>
-        <div className="education-input">
+        <div className="education-input" style={{ display: hideEducation }}>
+          <h2>Education Section</h2>
+
           {educationList.map((education, index) => (
             <EducationInfo
               key={index}
@@ -100,7 +137,9 @@ function App() {
           ))}
           <button onClick={handleNewEducation}>Add Education</button>
         </div>
-        <div className="experience-input">
+        <div className="experience-input" style={{ display: hideExperience }}>
+          <h2>Experience Section</h2>
+
           {experienceList.map((e, index) => {
             return (
               <ExperienceInfo
@@ -112,7 +151,7 @@ function App() {
           <button onClick={handleNewExperience}>add experience</button>
         </div>
       </div>
-      <div className="user-output">
+      <div className="user-output" style={{ display: 'none' }}>
         <div className="general-output">
           <GeneralOutput
             generalName={general.name}
