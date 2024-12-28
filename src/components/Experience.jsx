@@ -6,10 +6,21 @@ const experienceInfo = {
     'companyEndDate',
   ],
   type: ['input', 'input', 'date', 'date'],
+  experienceName: [
+    'COMPANY NAME',
+    'COMPANY LOCATION',
+    'START DATE',
+    'END DATE',
+  ],
 };
 
-function Experience({ idName, type, onChange }) {
-  return <input type={type} id={idName} onChange={onChange} />;
+function Experience({ idName, type, onChange, experienceName }) {
+  return (
+    <>
+      <label htmlFor={idName}>{experienceName}</label>
+      <input type={type} id={idName} onChange={onChange} />
+    </>
+  );
 }
 
 export default function ExperienceInfo({ onChange }) {
@@ -18,6 +29,7 @@ export default function ExperienceInfo({ onChange }) {
       <Experience
         key={index}
         type={experienceInfo.type[index]}
+        experienceName={experienceInfo.experienceName[index]}
         idName={id}
         onChange={onChange}
       />
