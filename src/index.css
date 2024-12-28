@@ -7,5 +7,24 @@
 
 #root {
   display: grid;
+  grid-template-rows: 10vh 90vh;
   grid-template-columns: 20vw 80vw;
+}
+
+.header {
+  background-color: aqua;
+  grid-column: 1 / 3;
+}
+
+.user-input {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  width: 90%;
+}
+
+.user-input > div > input,
+.user-input > div > div > input {
+  width: 100%;
+  margin-bottom: 10px;
 }
