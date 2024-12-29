@@ -7,6 +7,33 @@ import GeneralOutput, {
 } from './components/UserOutput';
 import ExperienceInfo from './components/Experience';
 
+const buttonName = ['General', 'Education', 'Experience'];
+
+function Buttons({ buttonName, onClick, checkButton }) {
+  return (
+    <button
+      id={buttonName}
+      style={{ backgroundColor: buttonName === checkButton ? 'red' : 'blue' }}
+      onClick={onClick}
+    >
+      {buttonName}
+    </button>
+  );
+}
+
+function CreateButtons({ onClick, checkButton }) {
+  return buttonName.map((name, index) => {
+    return (
+      <Buttons
+        key={index}
+        onClick={onClick}
+        checkButton={checkButton}
+        buttonName={name}
+      />
+    );
+  });
+}
+
 function App() {
   const [general, setGeneral] = useState({
     name: 'John',
@@ -35,20 +62,24 @@ function App() {
   const [hideGeneral, setHideGeneral] = useState('');
   const [hideEducation, setHideEducation] = useState('none');
   const [hideExperience, setHideExperience] = useState('none');
+  const [selected, setSelected] = useState('General');
 
   const hideSections = (e) => {
     if (e.target.textContent === 'General') {
       setHideGeneral('');
       setHideEducation('none');
       setHideExperience('none');
+      setSelected('General');
     } else if (e.target.textContent === 'Education') {
       setHideGeneral('none');
       setHideEducation('');
       setHideExperience('none');
+      setSelected('Education');
     } else {
       setHideGeneral('none');
       setHideEducation('none');
       setHideExperience('');
+      setSelected('Experience');
     }
   };
 
@@ -111,15 +142,7 @@ function App() {
         <h1>Resume Builder</h1>
       </div>
       <div className="nav-section">
-        <button className="general-button" onClick={hideSections}>
-          General
-        </button>
-        <button className="education-button" onClick={hideSections}>
-          Education
-        </button>
-        <button className="experience-button" onClick={hideSections}>
-          Experience
-        </button>
+        <CreateButtons checkButton={selected} onClick={hideSections} />
       </div>
       <div className="user-input">
         <div className="general-input" style={{ display: hideGeneral }}>
