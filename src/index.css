@@ -32,6 +32,7 @@
   border: none;
   color: white;
   font-size: 1rem;
+  cursor: pointer;
 }
 
 .main-content {
@@ -46,8 +47,7 @@
 
 .user-input > div > input,
 .user-input > div > div > input {
-  width: 95%;
-  padding: 5px;
+  padding: 5px 0;
   font-size: 1rem;
 }
 
@@ -64,5 +64,5 @@
 }
 
 .user-input {
-  width: 90%;
+  width: 100%;
 }

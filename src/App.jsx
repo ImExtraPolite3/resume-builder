@@ -150,7 +150,9 @@ function App() {
         <div className="user-input">
           <div className="general-input" style={{ display: hideGeneral }}>
             <h2>General Section</h2>
-            <GeneralInfo onChange={handleGeneral} />
+            <div className="general">
+              <GeneralInfo onChange={handleGeneral} />
+            </div>
           </div>
           <div className="education-input" style={{ display: hideEducation }}>
             <h2>Education Section</h2>
