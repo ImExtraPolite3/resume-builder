@@ -14,19 +14,15 @@ function CreateInfo({ idName, type, onChange, educationName }) {
 }
 
 export default function EducationInfo({ onChange }) {
-  return (
-    <div className={`education`}>
-      {educationInfo.idName.map((name, index) => {
-        return (
-          <CreateInfo
-            key={index}
-            type={educationInfo.type[index]}
-            educationName={educationInfo.educationName[index]}
-            idName={name}
-            onChange={onChange}
-          />
-        );
-      })}
-    </div>
-  );
+  return educationInfo.idName.map((name, index) => {
+    return (
+      <CreateInfo
+        key={index}
+        type={educationInfo.type[index]}
+        educationName={educationInfo.educationName[index]}
+        idName={name}
+        onChange={onChange}
+      />
+    );
+  });
 }

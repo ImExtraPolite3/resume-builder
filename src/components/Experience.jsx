@@ -24,19 +24,15 @@ function Experience({ idName, type, onChange, experienceName }) {
 }
 
 export default function ExperienceInfo({ onChange }) {
-  return (
-    <div className="experience">
-      {experienceInfo.idName.map((id, index) => {
-        return (
-          <Experience
-            key={index}
-            type={experienceInfo.type[index]}
-            experienceName={experienceInfo.experienceName[index]}
-            idName={id}
-            onChange={onChange}
-          />
-        );
-      })}
-    </div>
-  );
+  return experienceInfo.idName.map((id, index) => {
+    return (
+      <Experience
+        key={index}
+        type={experienceInfo.type[index]}
+        experienceName={experienceInfo.experienceName[index]}
+        idName={id}
+        onChange={onChange}
+      />
+    );
+  });
 }
