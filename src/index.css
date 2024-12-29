@@ -7,13 +7,21 @@
 
 #root {
   display: grid;
-  grid-template-rows: 10vh 90vh;
+  grid-template-rows: 7vh 5vh;
   grid-template-columns: 20vw 80vw;
+}
+
+#root > div {
+  grid-column: 1 / 3;
+}
+
+.nav-section {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
 }
 
 .header {
   background-color: aqua;
-  grid-column: 1 / 3;
 }
 
 .user-input {
@@ -23,8 +31,8 @@
   width: 90%;
 }
 
-.user-input > div > input,
+/* .user-input > div > input,
 .user-input > div > div > input {
   width: 100%;
   margin-bottom: 10px;
-}
+} */
