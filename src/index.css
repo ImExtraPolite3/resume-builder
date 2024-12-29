@@ -7,7 +7,7 @@
 
 #root {
   display: grid;
-  grid-template-rows: 7vh 5vh;
+  grid-template-rows: 7vh 5vh 88vh;
   grid-template-columns: 20vw 80vw;
 }
 
@@ -15,13 +15,35 @@
   grid-column: 1 / 3;
 }
 
+.header {
+  background-color: #1ca7e3;
+  color: white;
+}
+
 .nav-section {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
 }
 
-.header {
-  background-color: aqua;
+.nav-section > button {
+  border: none;
+  color: white;
+  font-size: 1rem;
+}
+
+.main-content {
+  background-color: gray;
+  color: white;
+}
+
+.main-content > div {
+  width: 90%;
+  margin: 20px auto;
+}
+
+.user-input > div > input,
+.user-input > div > div > input {
+  width: 100%;
 }
 
 .user-input {

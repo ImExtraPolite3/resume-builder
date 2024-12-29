@@ -13,7 +13,9 @@ function Buttons({ buttonName, onClick, checkButton }) {
   return (
     <button
       id={buttonName}
-      style={{ backgroundColor: buttonName === checkButton ? 'red' : 'blue' }}
+      style={{
+        backgroundColor: buttonName === checkButton ? 'gray' : '#333333',
+      }}
       onClick={onClick}
     >
       {buttonName}
@@ -144,67 +146,69 @@ function App() {
       <div className="nav-section">
         <CreateButtons checkButton={selected} onClick={hideSections} />
       </div>
-      <div className="user-input">
-        <div className="general-input" style={{ display: hideGeneral }}>
-          <h2>General Section</h2>
-          <GeneralInfo onChange={handleGeneral} />
-        </div>
-        <div className="education-input" style={{ display: hideEducation }}>
-          <h2>Education Section</h2>
+      <div className="main-content">
+        <div className="user-input">
+          <div className="general-input" style={{ display: hideGeneral }}>
+            <h2>General Section</h2>
+            <GeneralInfo onChange={handleGeneral} />
+          </div>
+          <div className="education-input" style={{ display: hideEducation }}>
+            <h2>Education Section</h2>
 
-          {educationList.map((education, index) => (
-            <EducationInfo
-              key={index}
-              onChange={(e) => handleEducationChange(index, e)}
-            />
-          ))}
-          <button onClick={handleNewEducation}>Add Education</button>
-        </div>
-        <div className="experience-input" style={{ display: hideExperience }}>
-          <h2>Experience Section</h2>
+            {educationList.map((education, index) => (
+              <EducationInfo
+                key={index}
+                onChange={(e) => handleEducationChange(index, e)}
+              />
+            ))}
+            <button onClick={handleNewEducation}>Add Education</button>
+          </div>
+          <div className="experience-input" style={{ display: hideExperience }}>
+            <h2>Experience Section</h2>
 
-          {experienceList.map((e, index) => {
-            return (
-              <ExperienceInfo
-                key={index}
-                onChange={(e) => handleExperienceChange(index, e)}
-              />
-            );
-          })}
-          <button onClick={handleNewExperience}>add experience</button>
+            {experienceList.map((e, index) => {
+              return (
+                <ExperienceInfo
+                  key={index}
+                  onChange={(e) => handleExperienceChange(index, e)}
+                />
+              );
+            })}
+            <button onClick={handleNewExperience}>add experience</button>
+          </div>
         </div>
-      </div>
-      <div className="user-output" style={{ display: 'none' }}>
-        <div className="general-output">
-          <GeneralOutput
-            generalName={general.name}
-            generalEmail={general.email}
-            generalPhoneNumber={general.phoneNumber}
-          />
-        </div>
-        <div className="education-output">
-          {educationList.map((education, index) => (
-            <EducationOutput
-              key={index}
-              educationName={education.schoolName}
-              educationLocation={education.schoolLocation}
-              educationStartDate={education.schoolStartDate}
-              educationEndDate={education.schoolEndDate}
+        <div className="user-output" style={{ display: 'none' }}>
+          <div className="general-output">
+            <GeneralOutput
+              generalName={general.name}
+              generalEmail={general.email}
+              generalPhoneNumber={general.phoneNumber}
             />
-          ))}
-        </div>
-        <div className="experience-output">
-          {experienceList.map((experience, index) => {
-            return (
-              <ExperienceOutput
+          </div>
+          <div className="education-output">
+            {educationList.map((education, index) => (
+              <EducationOutput
                 key={index}
-                companyName={experience.companyName}
-                companyLocation={experience.companyLocation}
-                companyStartDate={experience.companyStartDate}
-                companyEndDate={experience.companyEndDate}
+                educationName={education.schoolName}
+                educationLocation={education.schoolLocation}
+                educationStartDate={education.schoolStartDate}
+                educationEndDate={education.schoolEndDate}
               />
-            );
-          })}
+            ))}
+          </div>
+          <div className="experience-output">
+            {experienceList.map((experience, index) => {
+              return (
+                <ExperienceOutput
+                  key={index}
+                  companyName={experience.companyName}
+                  companyLocation={experience.companyLocation}
+                  companyStartDate={experience.companyStartDate}
+                  companyEndDate={experience.companyEndDate}
+                />
+              );
+            })}
+          </div>
         </div>
       </div>
     </>
