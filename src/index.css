@@ -18,6 +18,9 @@
 .header {
   background-color: #1ca7e3;
   color: white;
+  display: flex;
+  align-items: center;
+  padding-left: 10px;
 }
 
 .nav-section {
@@ -43,7 +46,14 @@
 
 .user-input > div > input,
 .user-input > div > div > input {
-  width: 100%;
+  width: 95%;
+  padding: 5px;
+  font-size: 1rem;
+  margin-bottom: 10px;
+}
+
+.user-input > div > h2 {
+  margin-bottom: 10px;
 }
 
 .user-input {
