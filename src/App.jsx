@@ -156,10 +156,15 @@ function App() {
             <h2>Education Section</h2>
 
             {educationList.map((education, index) => (
-              <EducationInfo
-                key={index}
-                onChange={(e) => handleEducationChange(index, e)}
-              />
+              <>
+                <div className={`education${index}`}>
+                  <h3>{`Education ${index}`}</h3>
+                  <EducationInfo
+                    key={index}
+                    onChange={(e) => handleEducationChange(index, e)}
+                  />
+                </div>
+              </>
             ))}
             <button onClick={handleNewEducation}>Add Education</button>
           </div>
@@ -168,10 +173,15 @@ function App() {
 
             {experienceList.map((e, index) => {
               return (
-                <ExperienceInfo
-                  key={index}
-                  onChange={(e) => handleExperienceChange(index, e)}
-                />
+                <>
+                  <div className={`experience${index}`}>
+                    <h3>{`Company ${index}`}</h3>
+                    <ExperienceInfo
+                      key={index}
+                      onChange={(e) => handleExperienceChange(index, e)}
+                    />
+                  </div>
+                </>
               );
             })}
             <button onClick={handleNewExperience}>add experience</button>
