@@ -49,22 +49,20 @@
   width: 95%;
   padding: 5px;
   font-size: 1rem;
-  margin-bottom: 10px;
 }
 
-.user-input > div > h2 {
-  margin-bottom: 10px;
+.user-input > div {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 }
 
-.user-input {
+.user-input > div > div {
   display: flex;
   flex-direction: column;
   gap: 5px;
-  width: 90%;
 }
 
-/* .user-input > div > input,
-.user-input > div > div > input {
-  width: 100%;
-  margin-bottom: 10px;
-} */
+.user-input {
+  width: 90%;
+}
