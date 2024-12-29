@@ -66,3 +66,18 @@
 .user-input {
   width: 100%;
 }
+
+.user-input > div > button {
+  margin-top: 10px;
+  padding: 5px;
+  border: none;
+  cursor: pointer;
+  background-color: #333333;
+  color: white;
+  font-size: 1rem;
+  transition: all 200ms;
+}
+
+.user-input > div > button:hover {
+  opacity: 0.8;
+}
