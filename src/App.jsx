@@ -186,7 +186,7 @@ function App() {
                 </>
               );
             })}
-            <button onClick={handleNewExperience}>add experience</button>
+            <button onClick={handleNewExperience}>Add Experience</button>
           </div>
         </div>
         <div className="user-output" style={{ display: 'none' }}>
