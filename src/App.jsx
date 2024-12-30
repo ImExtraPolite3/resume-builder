@@ -192,6 +192,7 @@ function App() {
               );
             })}
           </div>
+          <button className="preview">preview</button>
         </div>
         <div className="user-output" style={{ display: 'none' }}>
           <div className="general-output">
@@ -225,6 +226,7 @@ function App() {
               );
             })}
           </div>
+          <button className="edit">edit</button>
         </div>
       </div>
     </>
