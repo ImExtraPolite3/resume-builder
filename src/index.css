@@ -38,6 +38,7 @@
 .main-content {
   background-color: gray;
   color: white;
+  grid-row: 2 / 4;
 }
 
 .main-content > div {

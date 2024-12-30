@@ -65,6 +65,9 @@ function App() {
   const [hideEducation, setHideEducation] = useState('none');
   const [hideExperience, setHideExperience] = useState('none');
   const [selected, setSelected] = useState('General');
+  const [showInput, setShowInput] = useState('');
+  const [showOutput, setShowOutput] = useState('none');
+  const [grid, setGrid] = useState('3 / 4');
 
   const hideSections = (e) => {
     if (e.target.textContent === 'General') {
@@ -143,11 +146,11 @@ function App() {
       <div className="header">
         <h1>Resume Builder</h1>
       </div>
-      <div className="nav-section">
+      <div className="nav-section" style={{ display: showInput }}>
         <CreateButtons checkButton={selected} onClick={hideSections} />
       </div>
-      <div className="main-content">
-        <div className="user-input">
+      <div className="main-content" style={{ gridRow: grid }}>
+        <div className="user-input" style={{ display: showInput }}>
           <div className="general-input" style={{ display: hideGeneral }}>
             <h2>General Section</h2>
             <div className="general">
@@ -192,9 +195,18 @@ function App() {
               );
             })}
           </div>
-          <button className="preview">preview</button>
+          <button
+            className="preview"
+            onClick={() => {
+              setShowInput('none');
+              setShowOutput('');
+              setGrid('2 / 4');
+            }}
+          >
+            preview
+          </button>
         </div>
-        <div className="user-output" style={{ display: 'none' }}>
+        <div className="user-output" style={{ display: showOutput }}>
           <div className="general-output">
             <GeneralOutput
               generalName={general.name}
@@ -226,7 +238,16 @@ function App() {
               );
             })}
           </div>
-          <button className="edit">edit</button>
+          <button
+            className="edit"
+            onClick={() => {
+              setShowInput('');
+              setShowOutput('none');
+              setGrid('3 / 4');
+            }}
+          >
+            edit
+          </button>
         </div>
       </div>
     </>
