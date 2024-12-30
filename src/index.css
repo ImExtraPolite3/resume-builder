@@ -45,8 +45,8 @@
   margin: 20px auto;
 }
 
-.user-input > div > input,
-.user-input > div > div > input {
+.user-input > div > div > input,
+.user-input > div > div > div > input {
   padding: 5px 0;
   font-size: 1rem;
 }
@@ -57,18 +57,23 @@
   gap: 10px;
 }
 
-.user-input > div > div {
+.user-input > div > div,
+.user-input > div > div > div {
   display: flex;
   flex-direction: column;
   gap: 5px;
+}
+
+.main-content {
+  position: relative;
+  overflow-y: scroll;
 }
 
 .user-input {
   width: 100%;
 }
 
-.user-input > div > button {
-  margin-top: 10px;
+.user-input > div > div > button {
   padding: 5px;
   border: none;
   cursor: pointer;
@@ -80,4 +85,8 @@
 
 .user-input > div > button:hover {
   opacity: 0.8;
+}
+
+.create-more {
+  position: sticky;
 }

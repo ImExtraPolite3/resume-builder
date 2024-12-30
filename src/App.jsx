@@ -155,7 +155,10 @@ function App() {
             </div>
           </div>
           <div className="education-input" style={{ display: hideEducation }}>
-            <h2>Education Section</h2>
+            <div className="create-more">
+              <h2>Education Section</h2>
+              <button onClick={handleNewEducation}>Add Education</button>
+            </div>
 
             {educationList.map((education, index) => (
               <>
@@ -168,10 +171,12 @@ function App() {
                 </div>
               </>
             ))}
-            <button onClick={handleNewEducation}>Add Education</button>
           </div>
           <div className="experience-input" style={{ display: hideExperience }}>
-            <h2>Experience Section</h2>
+            <div className="create-more">
+              <h2>Experience Section</h2>
+              <button onClick={handleNewExperience}>Add Experience</button>
+            </div>
 
             {experienceList.map((e, index) => {
               return (
@@ -186,7 +191,6 @@ function App() {
                 </>
               );
             })}
-            <button onClick={handleNewExperience}>Add Experience</button>
           </div>
         </div>
         <div className="user-output" style={{ display: 'none' }}>
