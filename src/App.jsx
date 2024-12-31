@@ -45,6 +45,7 @@ function App() {
 
   const [educationList, setEducationList] = useState([
     {
+      id: Math.random(),
       schoolName: 'Random School',
       schoolLocation: 'Random Location',
       schoolStartDate: '2019-08-29',
@@ -97,16 +98,11 @@ function App() {
     }));
   };
 
-  const handleEducationChange = (index, e) => {
-    const { id, value } = e.target;
+  const handleEducationChange = (id, e) => {
+    const { name, value } = e.target;
     setEducationList((prevList) =>
-      prevList.map((education, i) =>
-        i === index
-          ? {
-              ...education,
-              [id]: value,
-            }
-          : education
+      prevList.map((education) =>
+        education.id === id ? { ...education, [name]: value } : education
       )
     );
   };
@@ -115,12 +111,17 @@ function App() {
     setEducationList((prevList) => [
       ...prevList,
       {
+        id: Math.random(),
         schoolName: '',
         schoolLocation: '',
         schoolStartDate: '',
         schoolEndDate: '',
       },
     ]);
+  };
+
+  const handleDeleteEducation = (id) => {
+    setEducationList((prevEdu) => prevEdu.filter((e) => e.id !== id));
   };
 
   const handleExperienceChange = (id, event) => {
@@ -171,16 +172,23 @@ function App() {
               <button onClick={handleNewEducation}>Add Education</button>
             </div>
 
-            {educationList.map((education, index) => (
-              <>
-                <div className={`education${index}`}>
-                  <h3>{`Education ${index}`}</h3>
-                  <EducationInfo
-                    key={index}
-                    onChange={(e) => handleEducationChange(index, e)}
-                  />
+            {educationList.map((education) => (
+              <div key={education.id} className={`education${education.id}`}>
+                <div>
+                  <h3>{`Education`}</h3>
+                  <button
+                    onClick={() => {
+                      handleDeleteEducation(education.id);
+                    }}
+                  >
+                    delete
+                  </button>
                 </div>
-              </>
+                <EducationInfo
+                  key={education.id}
+                  onChange={(edu) => handleEducationChange(education.id, edu)}
+                />
+              </div>
             ))}
           </div>
           <div className="experience-input" style={{ display: hideExperience }}>
@@ -189,11 +197,11 @@ function App() {
               <button onClick={handleNewExperience}>Add Experience</button>
             </div>
 
-            {experienceList.map((e, index) => {
+            {experienceList.map((e) => {
               return (
                 <div key={e.id} className={`experience${e.id}`}>
                   <div>
-                    <h3>{`Company ${index}`}</h3>
+                    <h3>{`Company`}</h3>
                     <button
                       onClick={() => {
                         handleDeleteExperience(e.id);
