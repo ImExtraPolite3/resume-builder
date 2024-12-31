@@ -54,6 +54,7 @@ function App() {
 
   const [experienceList, setExperienceList] = useState([
     {
+      id: Math.random(),
       companyName: 'Random Company',
       companyLocation: 'Random Company Location',
       companyStartDate: '2022-06-01',
@@ -122,10 +123,12 @@ function App() {
     ]);
   };
 
-  const handleExperienceChange = (index, e) => {
-    const { id, value } = e.target;
-    setExperienceList((prevExp) =>
-      prevExp.map((exp, i) => (i === index ? { ...exp, [id]: value } : exp))
+  const handleExperienceChange = (id, event) => {
+    const { name, value } = event.target;
+    setExperienceList((prevList) =>
+      prevList.map((experience) =>
+        experience.id === id ? { ...experience, [name]: value } : experience
+      )
     );
   };
 
@@ -133,12 +136,17 @@ function App() {
     setExperienceList((prevList) => [
       ...prevList,
       {
+        id: Math.random(),
         companyName: '',
         companyLocation: '',
         companyStartDate: '',
         companyEndDate: '',
       },
     ]);
+  };
+
+  const handleDeleteExperience = (id) => {
+    setExperienceList((prevList) => prevList.filter((e) => e.id !== id));
   };
 
   return (
@@ -183,15 +191,22 @@ function App() {
 
             {experienceList.map((e, index) => {
               return (
-                <>
-                  <div className={`experience${index}`}>
+                <div key={e.id} className={`experience${e.id}`}>
+                  <div>
                     <h3>{`Company ${index}`}</h3>
-                    <ExperienceInfo
-                      key={index}
-                      onChange={(e) => handleExperienceChange(index, e)}
-                    />
+                    <button
+                      onClick={() => {
+                        handleDeleteExperience(e.id);
+                      }}
+                    >
+                      delete
+                    </button>
                   </div>
-                </>
+                  <ExperienceInfo
+                    key={e.id}
+                    onChange={(exp) => handleExperienceChange(e.id, exp)}
+                  />
+                </div>
               );
             })}
           </div>
