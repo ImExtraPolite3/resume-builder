@@ -9,15 +9,15 @@ function General({ generalName, generalEmail, generalPhoneNumber }) {
 }
 
 function EducationOutput({
+  educationMajor,
   educationName,
-  educationLocation,
   educationStartDate,
   educationEndDate,
 }) {
   return (
     <>
       <p>{educationName}</p>
-      <p>{educationLocation}</p>
+      <p>{educationMajor}</p>
       <p>{educationStartDate}</p>
       <p>{educationEndDate}</p>
     </>
@@ -26,14 +26,14 @@ function EducationOutput({
 
 function ExperienceOutput({
   companyName,
-  companyLocation,
+  title,
   companyStartDate,
   companyEndDate,
 }) {
   return (
     <>
       <p>{companyName}</p>
-      <p>{companyLocation}</p>
+      <p>{title}</p>
       <p>{companyStartDate}</p>
       <p>{companyEndDate}</p>
     </>

@@ -1,17 +1,7 @@
 const experienceInfo = {
-  idName: [
-    'companyName',
-    'companyLocation',
-    'companyStartDate',
-    'companyEndDate',
-  ],
+  idName: ['companyName', 'title', 'companyStartDate', 'companyEndDate'],
   type: ['input', 'input', 'date', 'date'],
-  experienceName: [
-    'COMPANY NAME',
-    'COMPANY LOCATION',
-    'START DATE',
-    'END DATE',
-  ],
+  experienceName: ['COMPANY NAME', 'TITLE', 'START DATE', 'END DATE'],
 };
 
 function Experience({ idName, type, onChange, experienceName }) {

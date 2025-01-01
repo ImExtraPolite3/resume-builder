@@ -1,7 +1,7 @@
 const educationInfo = {
-  idName: ['schoolName', 'schoolLocation', 'schoolStartDate', 'schoolEndDate'],
+  idName: ['schoolName', 'major', 'schoolStartDate', 'schoolEndDate'],
   type: ['input', 'input', 'date', 'date'],
-  educationName: ['SCHOOL NAME', 'SCHOOL LOCATION', 'START DATE', 'END DATE'],
+  educationName: ['SCHOOL NAME', 'MAJOR', 'START DATE', 'END DATE'],
 };
 
 function CreateInfo({ idName, type, onChange, educationName }) {

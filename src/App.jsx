@@ -46,20 +46,20 @@ function App() {
   const [educationList, setEducationList] = useState([
     {
       id: crypto.randomUUID(),
-      schoolName: 'Random School',
-      schoolLocation: 'Random Location',
-      schoolStartDate: '2019-08-29',
-      schoolEndDate: '2022-05-21',
+      major: 'Major',
+      schoolName: 'School Name',
+      schoolStartDate: 'Start Date',
+      schoolEndDate: 'End Date',
     },
   ]);
 
   const [experienceList, setExperienceList] = useState([
     {
       id: crypto.randomUUID(),
-      companyName: 'Random Company',
-      companyLocation: 'Random Company Location',
-      companyStartDate: '2022-06-01',
-      companyEndDate: '2024-11-21',
+      companyName: 'Company Name',
+      title: 'Title',
+      companyStartDate: 'Start Date',
+      companyEndDate: 'End Date',
     },
   ]);
 
@@ -112,10 +112,10 @@ function App() {
       ...prevList,
       {
         id: crypto.randomUUID(),
-        schoolName: 'New School',
-        schoolLocation: 'New School Location',
-        schoolStartDate: '2014-09-20',
-        schoolEndDate: '2019-06-25',
+        major: 'Major',
+        schoolName: 'School Name',
+        schoolStartDate: 'Start Date',
+        schoolEndDate: 'End Date',
       },
     ]);
   };
@@ -136,10 +136,10 @@ function App() {
       ...prevList,
       {
         id: crypto.randomUUID(),
-        companyName: 'New Company',
-        companyLocation: 'New Company Location',
-        companyStartDate: '2023-04-24',
-        companyEndDate: '2024-05-21',
+        companyName: 'Company Name',
+        title: 'Title',
+        companyStartDate: 'Start Date',
+        companyEndDate: 'End Date',
       },
     ]);
   };
@@ -240,26 +240,34 @@ function App() {
             />
           </div>
           <div className="education-output">
-            {educationList.map((education, index) => (
-              <EducationOutput
-                key={index}
-                educationName={education.schoolName}
-                educationLocation={education.schoolLocation}
-                educationStartDate={education.schoolStartDate}
-                educationEndDate={education.schoolEndDate}
-              />
+            <h3>EDUCATION</h3>
+            <hr />
+            {educationList.map((education) => (
+              <div key={education.id}>
+                <EducationOutput
+                  key={education.id}
+                  educationMajor={education.major}
+                  educationName={education.schoolName}
+                  educationStartDate={education.schoolStartDate}
+                  educationEndDate={education.schoolEndDate}
+                />
+              </div>
             ))}
           </div>
           <div className="experience-output">
-            {experienceList.map((experience, index) => {
+            <h3>EXPERIENCE</h3>
+            <hr />
+            {experienceList.map((experience) => {
               return (
-                <ExperienceOutput
-                  key={index}
-                  companyName={experience.companyName}
-                  companyLocation={experience.companyLocation}
-                  companyStartDate={experience.companyStartDate}
-                  companyEndDate={experience.companyEndDate}
-                />
+                <div key={experience.id}>
+                  <ExperienceOutput
+                    key={experience.id}
+                    companyName={experience.companyName}
+                    title={experience.title}
+                    companyStartDate={experience.companyStartDate}
+                    companyEndDate={experience.companyEndDate}
+                  />
+                </div>
               );
             })}
           </div>
