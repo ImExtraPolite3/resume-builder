@@ -94,7 +94,36 @@
   bottom: 20px;
   right: 20px;
   background-color: #1ca7e3;
+  color: white;
   border: none;
   padding: 12px;
   cursor: pointer;
+}
+
+.input-header {
+  flex-direction: row !important;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.input-header > button {
+  border: none;
+  background: none;
+  cursor: pointer;
+}
+
+.delete-img {
+  width: 30px;
+}
+
+.delete-img:hover {
+  background-color: red;
+}
+
+.create-more > button {
+  transition: all 200ms;
+}
+
+.create-more > button:hover {
+  opacity: 0.8;
 }

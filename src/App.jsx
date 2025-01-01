@@ -174,14 +174,14 @@ function App() {
 
             {educationList.map((education) => (
               <div key={education.id} className={`education${education.id}`}>
-                <div>
+                <div className="input-header">
                   <h3>{`Education`}</h3>
                   <button
                     onClick={() => {
                       handleDeleteEducation(education.id);
                     }}
                   >
-                    delete
+                    <img src="delete.svg" alt="delete" className="delete-img" />
                   </button>
                 </div>
                 <EducationInfo
@@ -200,14 +200,18 @@ function App() {
             {experienceList.map((e) => {
               return (
                 <div key={e.id} className={`experience${e.id}`}>
-                  <div>
+                  <div className="input-header">
                     <h3>{`Company`}</h3>
                     <button
                       onClick={() => {
                         handleDeleteExperience(e.id);
                       }}
                     >
-                      delete
+                      <img
+                        src="delete.svg"
+                        alt="delete"
+                        className="delete-img"
+                      />
                     </button>
                   </div>
                   <ExperienceInfo
