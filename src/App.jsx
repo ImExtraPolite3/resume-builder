@@ -45,7 +45,7 @@ function App() {
 
   const [educationList, setEducationList] = useState([
     {
-      id: Math.random(),
+      id: crypto.randomUUID(),
       schoolName: 'Random School',
       schoolLocation: 'Random Location',
       schoolStartDate: '2019-08-29',
@@ -55,7 +55,7 @@ function App() {
 
   const [experienceList, setExperienceList] = useState([
     {
-      id: Math.random(),
+      id: crypto.randomUUID(),
       companyName: 'Random Company',
       companyLocation: 'Random Company Location',
       companyStartDate: '2022-06-01',
@@ -98,11 +98,11 @@ function App() {
     }));
   };
 
-  const handleEducationChange = (id, e) => {
-    const { name, value } = e.target;
+  const handleEducationChange = (index, e) => {
+    const { id, value } = e.target;
     setEducationList((prevList) =>
-      prevList.map((education) =>
-        education.id === id ? { ...education, [name]: value } : education
+      prevList.map((education, i) =>
+        i === index ? { ...education, [id]: value } : education
       )
     );
   };
@@ -111,11 +111,11 @@ function App() {
     setEducationList((prevList) => [
       ...prevList,
       {
-        id: Math.random(),
-        schoolName: '',
-        schoolLocation: '',
-        schoolStartDate: '',
-        schoolEndDate: '',
+        id: crypto.randomUUID(),
+        schoolName: 'New School',
+        schoolLocation: 'New School Location',
+        schoolStartDate: '2014-09-20',
+        schoolEndDate: '2019-06-25',
       },
     ]);
   };
@@ -124,12 +124,10 @@ function App() {
     setEducationList((prevEdu) => prevEdu.filter((e) => e.id !== id));
   };
 
-  const handleExperienceChange = (id, event) => {
-    const { name, value } = event.target;
+  const handleExperienceChange = (index, event) => {
+    const { id, value } = event.target;
     setExperienceList((prevList) =>
-      prevList.map((experience) =>
-        experience.id === id ? { ...experience, [name]: value } : experience
-      )
+      prevList.map((exp, i) => (i === index ? { ...exp, [id]: value } : exp))
     );
   };
 
@@ -137,11 +135,11 @@ function App() {
     setExperienceList((prevList) => [
       ...prevList,
       {
-        id: Math.random(),
-        companyName: '',
-        companyLocation: '',
-        companyStartDate: '',
-        companyEndDate: '',
+        id: crypto.randomUUID(),
+        companyName: 'New Company',
+        companyLocation: 'New Company Location',
+        companyStartDate: '2023-04-24',
+        companyEndDate: '2024-05-21',
       },
     ]);
   };
@@ -172,8 +170,8 @@ function App() {
               <button onClick={handleNewEducation}>Add Education</button>
             </div>
 
-            {educationList.map((education) => (
-              <div key={education.id} className={`education${education.id}`}>
+            {educationList.map((education, index) => (
+              <div key={education.id} className={`education`}>
                 <div className="input-header">
                   <h3>{`Education`}</h3>
                   <button
@@ -186,7 +184,7 @@ function App() {
                 </div>
                 <EducationInfo
                   key={education.id}
-                  onChange={(edu) => handleEducationChange(education.id, edu)}
+                  onChange={(edu) => handleEducationChange(index, edu)}
                 />
               </div>
             ))}
@@ -197,9 +195,9 @@ function App() {
               <button onClick={handleNewExperience}>Add Experience</button>
             </div>
 
-            {experienceList.map((e) => {
+            {experienceList.map((e, index) => {
               return (
-                <div key={e.id} className={`experience${e.id}`}>
+                <div key={e.id} className={`experience`}>
                   <div className="input-header">
                     <h3>{`Company`}</h3>
                     <button
@@ -216,7 +214,7 @@ function App() {
                   </div>
                   <ExperienceInfo
                     key={e.id}
-                    onChange={(exp) => handleExperienceChange(e.id, exp)}
+                    onChange={(exp) => handleExperienceChange(index, exp)}
                   />
                 </div>
               );
