@@ -230,6 +230,7 @@
   }
 
   .nav-section > button {
+    font-size: 1.1rem;
     grid-column: 1 / 4;
   }
 

@@ -38,8 +38,8 @@ function CreateButtons({ onClick, checkButton }) {
 
 function App() {
   const [general, setGeneral] = useState({
-    name: 'John',
-    email: 'johndoe@email.com',
+    name: 'Name',
+    email: 'email@email.com',
     phoneNumber: '1234567890',
   });
 
