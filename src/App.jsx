@@ -69,7 +69,6 @@ function App() {
   const [selected, setSelected] = useState('General');
   const [showInput, setShowInput] = useState('');
   const [showOutput, setShowOutput] = useState('none');
-  const [grid, setGrid] = useState('3 / 4');
 
   const hideSections = (e) => {
     if (e.target.textContent === 'General') {
@@ -153,10 +152,10 @@ function App() {
       <div className="header">
         <h1>Resume Builder</h1>
       </div>
-      <div className="nav-section" style={{ display: showInput }}>
-        <CreateButtons checkButton={selected} onClick={hideSections} />
-      </div>
-      <div className="main-content" style={{ gridRow: grid }}>
+      <div className="main-content">
+        <div className="nav-section" style={{ display: showInput }}>
+          <CreateButtons checkButton={selected} onClick={hideSections} />
+        </div>
         <div className="user-input" style={{ display: showInput }}>
           <div className="general-input" style={{ display: hideGeneral }}>
             <h2>General Section</h2>
@@ -225,58 +224,59 @@ function App() {
             onClick={() => {
               setShowInput('none');
               setShowOutput('');
-              setGrid('2 / 4');
             }}
           >
             preview
           </button>
         </div>
         <div className="user-output" style={{ display: showOutput }}>
-          <div className="general-output">
-            <GeneralOutput
-              generalName={general.name}
-              generalEmail={general.email}
-              generalPhoneNumber={general.phoneNumber}
-            />
-          </div>
-          <div className="education-output">
-            <h3>EDUCATION</h3>
-            <hr />
-            {educationList.map((education) => (
-              <div key={education.id}>
-                <EducationOutput
-                  key={education.id}
-                  educationMajor={education.major}
-                  educationName={education.schoolName}
-                  educationStartDate={education.schoolStartDate}
-                  educationEndDate={education.schoolEndDate}
-                />
-              </div>
-            ))}
-          </div>
-          <div className="experience-output">
-            <h3>EXPERIENCE</h3>
-            <hr />
-            {experienceList.map((experience) => {
-              return (
-                <div key={experience.id}>
-                  <ExperienceOutput
-                    key={experience.id}
-                    companyName={experience.companyName}
-                    title={experience.title}
-                    companyStartDate={experience.companyStartDate}
-                    companyEndDate={experience.companyEndDate}
+          <div className="page">
+            <div className="general-output">
+              <GeneralOutput
+                generalName={general.name}
+                generalEmail={general.email}
+                generalPhoneNumber={general.phoneNumber}
+              />
+            </div>
+            <div className="education-output">
+              <h3>EDUCATION</h3>
+              <hr />
+              {educationList.map((education) => (
+                <div key={education.id}>
+                  <EducationOutput
+                    key={education.id}
+                    educationMajor={education.major}
+                    educationName={education.schoolName}
+                    educationStartDate={education.schoolStartDate}
+                    educationEndDate={education.schoolEndDate}
                   />
                 </div>
-              );
-            })}
+              ))}
+            </div>
+            <div className="experience-output">
+              <h3>EXPERIENCE</h3>
+              <hr />
+              {experienceList.map((experience) => {
+                return (
+                  <div key={experience.id}>
+                    <ExperienceOutput
+                      key={experience.id}
+                      companyName={experience.companyName}
+                      title={experience.title}
+                      companyStartDate={experience.companyStartDate}
+                      companyEndDate={experience.companyEndDate}
+                    />
+                  </div>
+                );
+              })}
+            </div>
           </div>
+
           <button
             className="edit"
             onClick={() => {
               setShowInput('');
               setShowOutput('none');
-              setGrid('3 / 4');
             }}
           >
             edit
