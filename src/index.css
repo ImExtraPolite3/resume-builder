@@ -8,7 +8,7 @@
 #root {
   display: grid;
   background-color: #333333;
-  grid-template-rows: 7vh 93vh;
+  grid-template-rows: 7vh;
 }
 
 .header {
