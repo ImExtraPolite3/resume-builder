@@ -5,6 +5,10 @@
     Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
 
+body {
+  background-color: gray;
+}
+
 #root {
   display: grid;
   background-color: #333333;
@@ -29,7 +33,7 @@
 .main-content {
   color: white;
   display: grid;
-  grid-template-rows: 5vh 88vh;
+  grid-template-rows: 5vh;
 }
 
 .nav-section {
@@ -48,7 +52,6 @@
 .user-input,
 .user-output {
   background-color: gray !important;
-  height: 88vh;
 }
 
 .user-input > div {
@@ -221,6 +224,10 @@
 }
 
 @media (min-width: 1000px) {
+  body {
+    background-color: #333333;
+  }
+
   .main-content {
     grid-template-columns: 20vw 80vw;
   }
