@@ -59,16 +59,12 @@ body {
   margin: 20px auto;
 }
 
-.user-output {
-  height: 93vh;
-}
-
 .page {
   background-color: white;
   color: black;
   font-size: 0.8rem;
   width: 90%;
-  margin: 15px auto;
+  margin: 15px auto 0 auto;
   height: 85vh;
   padding: 5px;
 }
@@ -229,6 +225,7 @@ body {
   }
 
   .main-content {
+    grid-template-rows: 7vh 93vh;
     grid-template-columns: 20vw 80vw;
   }
 
@@ -241,7 +238,8 @@ body {
     grid-column: 1 / 4;
   }
 
-  .user-input {
+  .user-input,
+  .user-output {
     height: 93vh;
   }
 
